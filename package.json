@@ -1,0 +1,9 @@
+{
+  "name": "ganapati-form",
+  "version": "1.0.0",
+  "description": "Ganesh Chaturthi Prebooking Form",
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "^6.9.0"
+  }
+} 
