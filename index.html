@@ -388,46 +388,44 @@
                     });
                 }
             });
+
+            // --- Gallery Dynamic Generation ---
+            var galleryImages = [
+                {src: 'img/gallery/gallery-01.jpg', alt: 'Ganesh 1'},
+                {src: 'img/gallery/gallery-02.jpg', alt: 'Ganesh 2'},
+                {src: 'img/gallery/gallery-03.jpg', alt: 'Ganesh 3'},
+                {src: 'img/gallery/gallery-04.jpg', alt: 'Ganesh 4'},
+                {src: 'img/gallery/gallery-05.jpg', alt: 'Ganesh 5'},
+                {src: 'img/gallery/gallery-06.jpg', alt: 'Ganesh 6'},
+                {src: 'img/gallery/gallery-07.jpg', alt: 'Ganesh 7'},
+                {src: 'img/gallery/gallery-08.jpg', alt: 'Ganesh 8'},
+                {src: 'img/gallery/gallery-09.jpg', alt: 'Ganesh 9'},
+                {src: 'img/gallery/gallery-10.jpg', alt: 'Ganesh 10'},
+                {src: 'img/gallery/gallery-11.jpg', alt: 'Ganesh 11'},
+                {src: 'img/gallery/gallery-12.jpg', alt: 'Ganesh 12'},
+                {src: 'img/gallery/gallery-13.jpg', alt: 'Ganesh 13'},
+                {src: 'img/gallery/gallery-14.jpg', alt: 'Ganesh 14'},
+                {src: 'img/gallery/gallery-15.jpg', alt: 'Ganesh 15'},
+                {src: 'img/gallery/gallery-16.jpg', alt: 'Ganesh 16'},
+                {src: 'img/gallery/gallery-17.jpg', alt: 'Ganesh 17'},
+                {src: 'img/gallery/gallery-18.jpg', alt: 'Ganesh 18'},
+                {src: 'img/gallery/gallery-19.jpg', alt: 'Ganesh 19'},
+                {src: 'img/gallery/gallery-20.jpg', alt: 'Ganesh 20'},
+                {src: 'img/gallery/gallery-21.jpg', alt: 'Ganesh 21'},
+                {src: 'img/gallery/gallery-22.jpg', alt: 'Ganesh 22'},
+                {src: 'img/gallery/gallery-23.jpg', alt: 'Ganesh 23'},
+                {src: 'img/gallery/gallery-24.jpg', alt: 'Ganesh 24'}
+            ];
+            var $galleryGrid = $('#gallery-grid');
+            galleryImages.forEach(function(img) {
+                var item = '<div class="col-xs-6 col-sm-3" style="margin-bottom:20px;">' +
+                    '<a class="fancybox" rel="gallery" href="' + img.src + '">' +
+                    '<img src="' + img.src + '" alt="' + img.alt + '" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); background:#fff;">' +
+                    '</a></div>';
+                $galleryGrid.append(item);
+            });
         });
     </script>
-
-    // --- Gallery Dynamic Generation ---
-    var galleryImages = [
-        {src: 'img/gallery/gallery-01.jpg', alt: 'Ganesh 1'},
-        {src: 'img/gallery/gallery-02.jpg', alt: 'Ganesh 2'},
-        {src: 'img/gallery/gallery-03.jpg', alt: 'Ganesh 3'},
-        {src: 'img/gallery/gallery-04.jpg', alt: 'Ganesh 4'},
-        {src: 'img/gallery/gallery-05.jpg', alt: 'Ganesh 5'},
-        {src: 'img/gallery/gallery-06.jpg', alt: 'Ganesh 6'},
-        {src: 'img/gallery/gallery-07.jpg', alt: 'Ganesh 7'},
-        {src: 'img/gallery/gallery-08.jpg', alt: 'Ganesh 8'},
-        {src: 'img/gallery/gallery-09.jpg', alt: 'Ganesh 9'},
-        {src: 'img/gallery/gallery-10.jpg', alt: 'Ganesh 10'},
-        {src: 'img/gallery/gallery-11.jpg', alt: 'Ganesh 11'},
-        {src: 'img/gallery/gallery-12.jpg', alt: 'Ganesh 12'},
-        {src: 'img/gallery/gallery-13.jpg', alt: 'Ganesh 13'},
-        {src: 'img/gallery/gallery-14.jpg', alt: 'Ganesh 14'},
-        {src: 'img/gallery/gallery-15.jpg', alt: 'Ganesh 15'},
-        {src: 'img/gallery/gallery-16.jpg', alt: 'Ganesh 16'},
-        {src: 'img/gallery/gallery-17.jpg', alt: 'Ganesh 17'},
-        {src: 'img/gallery/gallery-18.jpg', alt: 'Ganesh 18'},
-        {src: 'img/gallery/gallery-19.jpg', alt: 'Ganesh 19'},
-        {src: 'img/gallery/gallery-20.jpg', alt: 'Ganesh 20'},
-        {src: 'img/gallery/gallery-21.jpg', alt: 'Ganesh 21'},
-        {src: 'img/gallery/gallery-22.jpg', alt: 'Ganesh 22'},
-        {src: 'img/gallery/gallery-23.jpg', alt: 'Ganesh 23'},
-        {src: 'img/gallery/gallery-24.jpg', alt: 'Ganesh 24'},
-        {src: 'img/gallery/gallery-25.jpg', alt: 'Ganesh 25'},
-        {src: 'img/gallery/gallery-26.jpg', alt: 'Ganesh 26'}
-    ];
-    var $galleryGrid = $('#gallery-grid');
-    galleryImages.forEach(function(img) {
-        var item = '<div class="col-xs-6 col-sm-3" style="margin-bottom:20px;">' +
-            '<a class="fancybox" rel="gallery" href="' + img.src + '">' +
-            '<img src="' + img.src + '" alt="' + img.alt + '" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); background:#fff;">' +
-            '</a></div>';
-        $galleryGrid.append(item);
-    });
 
     <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
 </body>
