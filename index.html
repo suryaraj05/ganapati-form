@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <!-- meta charec set -->
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- Page Title -->
+    <title>Themefisher.Free Bootstrap3 based HTML5 Templates</title>
+    <!-- Meta Description -->
+    <meta name="description" content="Blue One Page Creative HTML5 Template">
+    <meta name="keywords"
+        content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
+    <meta name="author" content="Muhammad Morshed">
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- CSS
+		================================================== -->
+    <!-- Fontawesome Icon font -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Twitter Bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- jquery.fancybox  -->
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <!-- animate -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- media-queries -->
+    <link rel="stylesheet" href="css/media-queries.css">
+    <!-- Custom Styles -->
+    <style>
+        .btn-toggle {
+            transition: all 0.3s ease;
+        }
+        .btn-toggle.active {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+        .package-card img {
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            width: 100%;
+            border-radius: 6px;
+            background: #fff;
+        }
+        .package-card {
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+        }
+        .package-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .package-card input[type="radio"]:checked + div {
+            border-color: #28a745;
+            box-shadow: 0 0 8px rgba(40,167,69,0.3);
+        }
+    </style>
+
+    <!-- Modernizer Script for old Browsers -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="body">
+
+    <!-- preloader -->
+    <div id="preloader">
+        <img src="img/preloader.gif" alt="Preloader">
+    </div>
+    <!-- end preloader -->
+
+    <!-- Fixed Navigation -->
+    <header id="navigation" class="navbar-fixed-top navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- responsive nav button -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars fa-2x"></i>
+                </button>
+                <!-- /responsive nav button -->
+            </div>
+            <!-- main nav -->
+            <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                <ul id="nav" class="nav navbar-nav">
+                    <li class="current"><a href="#banner">Home</a></li>
+                    <li><a href="#ganesh-chaturthi">Prebooking</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </nav>
+            <!-- /main nav -->
+        </div>
+    </header>
+
+    <!-- Banner Section -->
+    <section id="banner" style="padding:0; margin:0;">
+        <img src="img/banner-image.jpg" alt="Ganesh Chaturthi Banner" style="width:100%; height:auto; display:block;">
+ Cliente: </section>
+
+    <!-- Prebooking Form Section -->
+    <section id="ganesh-chaturthi" class="container" style="margin-top: 40px;">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default" style="box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+                    <div class="panel-heading text-center"><h2>Ganesh Chaturthi 2025 Prebooking</h2></div>
+                    <div class="panel-body">
+                        <h4 class="text-center">Important Dates</h4>
+                        <ul class="list-inline text-center" style="font-size:1.1em;">
+                            <li><strong>Booking Deadline:</strong> June 30, 2025</li>
+                            <li><strong>Ganesh Chaturthi:</strong> September 2, 2025</li>
+                        </ul>
+                        <hr>
+                        <form id="prebooking-form" action="process.php" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your contact number" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" id="city" name="city" placeholder="Your city" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <label style="font-size:1.2em;">Idol Type</label><br>
+                                <div class="btn-group" id="idolTypeGroup" role="group" aria-label="Idol Type" style="margin-bottom:15px;">
+                                    <button type="button" class="btn btn-default btn-toggle active" data-type="eco">Eco-Friendly</button>
+                                    <button type="button" class="btn btn-default btn-toggle" data-type="normal">Normal</button>
+                                </div>
+                                <input type="hidden" name="idol_type" id="idol_type" value="eco">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size:1.2em;">Size</label>
+                                <div id="size-reference" style="text-align:center; margin-bottom:10px;">
+                                    <img src="img/ganesh-size-reference.jpg" alt="Size Reference" style="max-width:300px; width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); display:block; margin:0 auto;">
+                                    <div style="font-size:0.95em; color:#888;">Compare the sizes visually</div>
+                                </div>
+                                <div class="row" id="sizes-row">
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="eco-small" required>
+                                            <div class="package-card">
+                                                <img id="size-img-small" src="img/eco-small.jpg" alt="Small">
+                                                <div style="margin-top:5px;" id="size-label-small">Small<br><small>£9 - £20</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="eco-medium">
+                                            <div class="package-card">
+                                                <img id="size-img-medium" src="img/eco-medium.jpg" alt="Medium">
+                                                <div style="margin-top:5px;" id="size-label-medium">Medium<br><small>£45 - £100</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="eco-large">
+                                            <div class="package-card">
+                                                <img id="size-img-large" src="img/eco-large.jpg" alt="Large">
+                                                <div style="margin-top:5px;" id="size-label-large">Large<br><small>£120 - £250</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="eco-premium">
+                                            <div class="package-card">
+                                                <img id="size-img-premium" src="img/eco-premim.jpg" alt="Premium">
+                                                <div style="margin-top:5px;" id="size-label-premium">Premium<br><small>£250 - £1500</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="alert alert-info" style="margin-bottom: 10px;">
+                                    <strong>Cash on Delivery (COD) available</strong><br>
+                                    Pay when your Ganesh murthi is delivered to your doorstep
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="font-size:1.2em;">Submit Prebooking</button>
+                            <div id="form-message" style="margin-top:15px; display:none;"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container" style="margin-top:40px; margin-bottom:40px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center" style="margin-bottom:30px;">Gallery</h2>
+                <div class="row" id="gallery-grid">
+                    <!-- Gallery items will be injected here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/jquery.parallax-1.1.3.js"></script>
+    <script src="js/jquery-countTo.js"></script>
+    <script src="js/jquery.appear.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Idol type button group logic
+            var sizeData = {
+                eco: {
+                    small: {img: 'img/eco-small.jpg', value: 'eco-small', label: 'Small<br><small>£9 - £20</small>'},
+                    medium: {img: 'img/eco-medium.png', value: 'eco-medium', label: 'Medium<br><small>£45 - £100</small>'},
+                    large: {img: 'img/eco-large.png', value: 'eco-large', label: 'Large<br><small>£120 - £250</small>'},
+                    premium: {img: 'img/eco-premium.png', value: 'eco-premium', label: 'Premium<br><small>£250 - £1500</small>'}
+                },
+                normal: {
+                    small: {img: 'img/normal-small.jpg', value: 'normal-small', label: 'Small<br><small>£9 - £20</small>'},
+                    medium: {img: 'img/normal-medium.png', value: 'normal-medium', label: 'Medium<br><small>£45 - £100</small>'},
+                    large: {img: 'img/normal-large.png', value: 'normal-large', label: 'Large<br><small>£120 - £250</small>'},
+                    premium: {img: 'img/normal-premium.jpg', value: 'normal-premium', label: 'Premium<br><small>£250 - £1500</small>'}
+                }
+            };
+
+            function updateSizes(type) {
+                $('#idol_type').val(type);
+                // Update images, values, and labels
+                $('#size-img-small').attr('src', sizeData[type].small.img);
+                $('#size-img-medium').attr('src', sizeData[type].medium.img);
+                $('#size-img-large').attr('src', sizeData[type].large.img);
+                $('#size-img-premium').attr('src', sizeData[type].premium.img);
+                // Update radio values
+                $('input[name="size"]').eq(0).val(sizeData[type].small.value);
+                $('input[name="size"]').eq(1).val(sizeData[type].medium.value);
+                $('input[name="size"]').eq(2).val(sizeData[type].large.value);
+                $('input[name="size"]').eq(3).val(sizeData[type].premium.value);
+                // Update labels
+                $('#size-label-small').html(sizeData[type].small.label);
+                $('#size-label-medium').html(sizeData[type].medium.label);
+                $('#size-label-large').html(sizeData[type].large.label);
+                $('#size-label-premium').html(sizeData[type].premium.label);
+                // Clear radio selection
+                $('input[name="size"]').prop('checked', false);
+            }
+
+            $('#idolTypeGroup button').click(function() {
+                $('#idolTypeGroup button').removeClass('active');
+                $(this).addClass('active');
+                var type = $(this).data('type');
+                updateSizes(type);
+            });
+
+            // Initial render
+            updateSizes('eco');
+
+            // AJAX form submission
+            $('#prebooking-form').on('submit', function(e) {
+                e.preventDefault();
+                var $form = $(this);
+                var $msg = $('#form-message');
+                $msg.hide().removeClass('alert-success alert-danger');
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: $form.attr('method'),
+                    data: $form.serialize(),
+                    success: function(response) {
+                        $msg.text('Prebooking submitted successfully!').addClass('alert alert-success').show();
+                        $form[0].reset();
+                        updateSizes($('#idol_type').val());
+                    },
+                    error: function() {
+                        $msg.text('There was an error submitting your prebooking. Please try again.').addClass('alert alert-danger').show();
+                    }
+                });
+            });
+
+            // WOW animations
+            var wow = new WOW({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 120,
+                mobile: false,
+                live: true
+            });
+            wow.init();
+
+            // Contact form validation
+            $('#prebooking-form').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 2
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: {
+                        required: true
+                    },
+                    city: {
+                        required: true
+                    },
+                    size: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Please enter your name",
+                        minlength: "Your name must consist of at least 2 characters"
+                    },
+                    email: {
+                        required: "Please enter your email",
+                        email: "Please enter a valid email address"
+                    },
+                    phone: {
+                        required: "Please enter your phone number"
+                    },
+                    city: {
+                        required: "Please enter your city"
+                    },
+                    size: {
+                        required: "Please select a size"
+                    }
+                },
+                submitHandler: function(form) {
+                    $(form).ajaxSubmit({
+                        type: "POST",
+                        data: $(form).serialize(),
+                        url: "process.php",
+                        success: function() {
+                            $('#prebooking-form :input').attr('disabled', 'disabled');
+                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
+                                $(this).find(':input').attr('disabled', 'disabled');
+                                $(this).find('label').css('cursor', 'default');
+                                $('#form-message').text('Prebooking submitted successfully!').addClass('alert alert-success').show();
+                            });
+                        },
+                        error: function() {
+                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
+                                $('#form-message').text('There was an error submitting your prebooking. Please try again.').addClass('alert alert-danger').show();
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    // --- Gallery Dynamic Generation ---
+    var galleryImages = [
+        {src: 'img/gallery/gallery-01.jpg', alt: 'Ganesh 1'},
+        {src: 'img/gallery/gallery-02.jpg', alt: 'Ganesh 2'},
+        {src: 'img/gallery/gallery-03.jpg', alt: 'Ganesh 3'},
+        {src: 'img/gallery/gallery-04.jpg', alt: 'Ganesh 4'},
+        {src: 'img/gallery/gallery-05.jpg', alt: 'Ganesh 5'},
+        {src: 'img/gallery/gallery-06.jpg', alt: 'Ganesh 6'},
+        {src: 'img/gallery/gallery-07.jpg', alt: 'Ganesh 7'},
+        {src: 'img/gallery/gallery-08.jpg', alt: 'Ganesh 8'},
+        {src: 'img/gallery/gallery-09.jpg', alt: 'Ganesh 9'},
+        {src: 'img/gallery/gallery-10.jpg', alt: 'Ganesh 10'},
+        {src: 'img/gallery/gallery-11.jpg', alt: 'Ganesh 11'},
+        {src: 'img/gallery/gallery-12.jpg', alt: 'Ganesh 12'},
+        {src: 'img/gallery/gallery-13.jpg', alt: 'Ganesh 13'},
+        {src: 'img/gallery/gallery-14.jpg', alt: 'Ganesh 14'},
+        {src: 'img/gallery/gallery-15.jpg', alt: 'Ganesh 15'},
+        {src: 'img/gallery/gallery-16.jpg', alt: 'Ganesh 16'},
+        {src: 'img/gallery/gallery-17.jpg', alt: 'Ganesh 17'},
+        {src: 'img/gallery/gallery-18.jpg', alt: 'Ganesh 18'},
+        {src: 'img/gallery/gallery-19.jpg', alt: 'Ganesh 19'},
+        {src: 'img/gallery/gallery-20.jpg', alt: 'Ganesh 20'},
+        {src: 'img/gallery/gallery-21.jpg', alt: 'Ganesh 21'},
+        {src: 'img/gallery/gallery-22.jpg', alt: 'Ganesh 22'},
+        {src: 'img/gallery/gallery-23.jpg', alt: 'Ganesh 23'},
+        {src: 'img/gallery/gallery-24.jpg', alt: 'Ganesh 24'},
+        {src: 'img/gallery/gallery-25.jpg', alt: 'Ganesh 25'},
+        {src: 'img/gallery/gallery-26.jpg', alt: 'Ganesh 26'}
+    ];
+    var $galleryGrid = $('#gallery-grid');
+    galleryImages.forEach(function(img) {
+        var item = '<div class="col-xs-6 col-sm-3" style="margin-bottom:20px;">' +
+            '<a class="fancybox" rel="gallery" href="' + img.src + '">' +
+            '<img src="' + img.src + '" alt="' + img.alt + '" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); background:#fff;">' +
+            '</a></div>';
+        $galleryGrid.append(item);
+    });
+
+    <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
+</body>
+</html>
