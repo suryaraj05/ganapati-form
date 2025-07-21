@@ -255,6 +255,9 @@
                             if(response.success) {
                                 $('#prebooking-form').hide();
                                 $('#form-message').removeClass('alert-danger').addClass('alert alert-success').html('<h3 style="margin-top:10px;">Thank you!</h3><p>Your prebooking has been submitted successfully.<br>We will contact you soon with further details.</p>').show();
+                                setTimeout(function() {
+                                    window.location.href = 'index.html';
+                                }, 2000);
                             } else {
                                 $('#form-message').removeClass('alert-success').addClass('alert alert-danger').text('There was an error submitting your prebooking. Please try again.').show();
                             }
