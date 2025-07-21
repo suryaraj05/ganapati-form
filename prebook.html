@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Pre-Book Ganesh Murthi | Brandi Ganesh Chaturthi 2025</title>
+    <meta name="description" content="Prebook your Ganesh idol for Ganesh Chaturthi 2025. Choose from eco-friendly and normal idols in various sizes. Cash on Delivery available.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="img/logo-square.png">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media-queries.css">
+    <style>
+        .btn-toggle { transition: all 0.3s ease; }
+        .btn-toggle.active { background-color: #28a745 !important; color: white !important; }
+        .package-card img { aspect-ratio: 1/1; object-fit: cover; width: 100%; border-radius: 6px; background: #fff; }
+        .package-card { padding: 10px; border: 1px solid #eee; border-radius: 8px; margin-top: 5px; transition: all 0.3s ease; }
+        .package-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .package-card input[type="radio"]:checked + div { border-color: #28a745; box-shadow: 0 0 8px rgba(40,167,69,0.3); }
+    </style>
+</head>
+<body>
+    <section class="container" style="margin-top: 40px; margin-bottom:40px;">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default" style="box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+                    <div class="panel-heading text-center"><h2>Ganesh Chaturthi 2025 Prebooking</h2></div>
+                    <div class="panel-body">
+                        <h4 class="text-center">Important Dates</h4>
+                        <ul class="list-inline text-center" style="font-size:1.1em;">
+                            <li><strong>Booking Deadline:</strong> June 30, 2025</li>
+                            <li><strong>Ganesh Chaturthi:</strong> September 2, 2025</li>
+                        </ul>
+                        <hr>
+                        <form id="prebooking-form" action="process.php" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your contact number" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" id="city" name="city" placeholder="Your city" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <label style="font-size:1.2em;">Idol Type</label><br>
+                                <div class="btn-group" id="idolTypeGroup" role="group" aria-label="Idol Type" style="margin-bottom:15px;">
+                                    <button type="button" class="btn btn-default btn-toggle active" data-type="normal">Normal</button>
+                                    <button type="button" class="btn btn-default btn-toggle" data-type="eco">Eco-Friendly</button>
+                                </div>
+                                <input type="hidden" name="idol_type" id="idol_type" value="normal">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size:1.2em;">Size</label>
+                                <div id="size-reference" style="text-align:center; margin-bottom:10px;">
+                                    <img src="img/ganesh-size-reference.jpg" alt="Size Reference" style="max-width:300px; width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); display:block; margin:0 auto;">
+                                    <div style="font-size:0.95em; color:#888;">Compare the sizes visually</div>
+                                </div>
+                                <div class="row" id="sizes-row">
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="normal-small" required>
+                                            <div class="package-card">
+                                                <img id="size-img-small" src="img/normal-small.jpg" alt="Small">
+                                                <div style="margin-top:5px;" id="size-label-small">Small<br><small>8-9 inches</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="normal-medium">
+                                            <div class="package-card">
+                                                <img id="size-img-medium" src="img/normal-medium.png" alt="Medium">
+                                                <div style="margin-top:5px;" id="size-label-medium">Medium<br><small>12-15 inches</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="normal-large">
+                                            <div class="package-card">
+                                                <img id="size-img-large" src="img/normal-large.png" alt="Large">
+                                                <div style="margin-top:5px;" id="size-label-large">Large<br><small>20-24 inches</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-3 text-center">
+                                        <label style="width:100%;">
+                                            <input type="radio" name="size" value="normal-premium">
+                                            <div class="package-card">
+                                                <img id="size-img-premium" src="img/normal-premium.jpg" alt="Premium">
+                                                <div style="margin-top:5px;" id="size-label-premium">Premium<br><small>15-60 inches</small></div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="alert alert-info" style="margin-bottom: 10px;">
+                                    <strong>Cash on Delivery (COD) available</strong><br>
+                                    Pay when your Ganesh murthi is delivered to your doorstep
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="font-size:1.2em;">Submit Prebooking</button>
+                            <div id="form-message" style="margin-top:15px; display:none;"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var sizeData = {
+                normal: {
+                    small: {img: 'img/normal-small.jpg', value: 'normal-small', label: 'Small<br><small>8-9 inches</small>'},
+                    medium: {img: 'img/normal-medium.png', value: 'normal-medium', label: 'Medium<br><small>12-15 inches</small>'},
+                    large: {img: 'img/normal-large.png', value: 'normal-large', label: 'Large<br><small>20-24 inches</small>'},
+                    premium: {img: 'img/normal-premium.jpg', value: 'normal-premium', label: 'Premium<br><small>15-60 inches</small>'}
+                },
+                eco: {
+                    small: {img: 'img/eco-small.jpg', value: 'eco-small', label: 'Small<br><small>8-9 inches</small>'},
+                    medium: {img: 'img/eco-medium.png', value: 'eco-medium', label: 'Medium<br><small>12-15 inches</small>'},
+                    large: {img: 'img/eco-large.png', value: 'eco-large', label: 'Large<br><small>20-24 inches</small>'}
+                }
+            };
+            function updateSizes(type) {
+                $('#idol_type').val(type);
+                $('#size-img-small').attr('src', sizeData[type].small.img);
+                $('#size-img-medium').attr('src', sizeData[type].medium.img);
+                $('#size-img-large').attr('src', sizeData[type].large.img);
+                if(type === 'normal') {
+                    $('#size-img-premium').closest('.col-xs-6').show();
+                    $('#size-img-premium').attr('src', sizeData[type].premium.img);
+                    $('input[name="size"]').eq(3).val(sizeData[type].premium.value);
+                    $('#size-label-premium').html(sizeData[type].premium.label);
+                } else {
+                    $('#size-img-premium').closest('.col-xs-6').hide();
+                }
+                $('input[name="size"]').eq(0).val(sizeData[type].small.value);
+                $('input[name="size"]').eq(1).val(sizeData[type].medium.value);
+                $('input[name="size"]').eq(2).val(sizeData[type].large.value);
+                $('#size-label-small').html(sizeData[type].small.label);
+                $('#size-label-medium').html(sizeData[type].medium.label);
+                $('#size-label-large').html(sizeData[type].large.label);
+                $('input[name="size"]').prop('checked', false);
+            }
+            $('#idolTypeGroup button').click(function() {
+                $('#idolTypeGroup button').removeClass('active');
+                $(this).addClass('active');
+                var type = $(this).data('type');
+                updateSizes(type);
+            });
+            updateSizes('normal');
+            $('#prebooking-form').validate({
+                rules: {
+                    name: { required: true, minlength: 2 },
+                    email: { required: true, email: true },
+                    phone: { required: true },
+                    city: { required: true },
+                    size: { required: true }
+                },
+                messages: {
+                    name: { required: "Please enter your name", minlength: "Your name must consist of at least 2 characters" },
+                    email: { required: "Please enter your email", email: "Please enter a valid email address" },
+                    phone: { required: "Please enter your phone number" },
+                    city: { required: "Please enter your city" },
+                    size: { required: "Please select a size" }
+                },
+                submitHandler: function(form) {
+                    $(form).ajaxSubmit({
+                        type: "POST",
+                        data: $(form).serialize(),
+                        url: "process.php",
+                        success: function() {
+                            $('#prebooking-form :input').attr('disabled', 'disabled');
+                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
+                                $(this).find(':input').attr('disabled', 'disabled');
+                                $(this).find('label').css('cursor', 'default');
+                                $('#form-message').text('Prebooking submitted successfully!').addClass('alert alert-success').show();
+                            });
+                        },
+                        error: function() {
+                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
+                                $('#form-message').text('There was an error submitting your prebooking. Please try again.').addClass('alert alert-danger').show();
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

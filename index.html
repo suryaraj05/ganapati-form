@@ -103,8 +103,9 @@
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul id="nav" class="nav navbar-nav">
                     <li class="current"><a href="#banner">Home</a></li>
-                    <li><a href="#ganesh-chaturthi">Prebooking</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="prebook.html" class="external">Pre-book</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
             <!-- /main nav -->
@@ -112,122 +113,17 @@
     </header>
 
     <!-- Banner Section -->
-    <section id="banner" style="padding:0; margin:0;">
+    <section id="banner" style="padding:0; margin:0; position:relative;">
         <img src="img/banner-image.jpg" alt="Ganesh Chaturthi Banner" style="width:100%; height:auto; display:block;">
- Cliente: </section>
-
-    <!-- Prebooking Form Section -->
-    <section id="ganesh-chaturthi" class="container" style="margin-top: 40px;">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default" style="box-shadow:0 2px 16px rgba(0,0,0,0.08);">
-                    <div class="panel-heading text-center"><h2>Ganesh Chaturthi 2025 Prebooking</h2></div>
-                    <div class="panel-body">
-                        <h4 class="text-center">Important Dates</h4>
-                        <ul class="list-inline text-center" style="font-size:1.1em;">
-                            <li><strong>Booking Deadline:</strong> June 30, 2025</li>
-                            <li><strong>Ganesh Chaturthi:</strong> September 2, 2025</li>
-                        </ul>
-                        <hr>
-                        <form id="prebooking-form" action="process.php" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="phone">Phone</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your contact number" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="city">City</label>
-                                        <input type="text" class="form-control" id="city" name="city" placeholder="Your city" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group text-center">
-                                <label style="font-size:1.2em;">Idol Type</label><br>
-                                <div class="btn-group" id="idolTypeGroup" role="group" aria-label="Idol Type" style="margin-bottom:15px;">
-                                    <button type="button" class="btn btn-default btn-toggle active" data-type="normal">Normal</button>
-                                    <button type="button" class="btn btn-default btn-toggle" data-type="eco">Eco-Friendly</button>
-                                </div>
-                                <input type="hidden" name="idol_type" id="idol_type" value="normal">
-                            </div>
-                            <div class="form-group">
-                                <label style="font-size:1.2em;">Size</label>
-                                <div id="size-reference" style="text-align:center; margin-bottom:10px;">
-                                    <img src="img/ganesh-size-reference.jpg" alt="Size Reference" style="max-width:300px; width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); display:block; margin:0 auto;">
-                                    <div style="font-size:0.95em; color:#888;">Compare the sizes visually</div>
-                                </div>
-                                <div class="row" id="sizes-row">
-                                    <div class="col-xs-6 col-sm-3 text-center">
-                                        <label style="width:100%;">
-                                            <input type="radio" name="size" value="normal-small" required>
-                                            <div class="package-card">
-                                                <img id="size-img-small" src="img/normal-small.jpg" alt="Small">
-                                                <div style="margin-top:5px;" id="size-label-small">Small<br><small>8-9 inches</small></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3 text-center">
-                                        <label style="width:100%;">
-                                            <input type="radio" name="size" value="normal-medium">
-                                            <div class="package-card">
-                                                <img id="size-img-medium" src="img/normal-medium.png" alt="Medium">
-                                                <div style="margin-top:5px;" id="size-label-medium">Medium<br><small>12-15 inches</small></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3 text-center">
-                                        <label style="width:100%;">
-                                            <input type="radio" name="size" value="normal-large">
-                                            <div class="package-card">
-                                                <img id="size-img-large" src="img/normal-large.png" alt="Large">
-                                                <div style="margin-top:5px;" id="size-label-large">Large<br><small>20-24 inches</small></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3 text-center">
-                                        <label style="width:100%;">
-                                            <input type="radio" name="size" value="normal-premium">
-                                            <div class="package-card">
-                                                <img id="size-img-premium" src="img/normal-premium.jpg" alt="Premium">
-                                                <div style="margin-top:5px;" id="size-label-premium">Premium<br><small>15-60 inches</small></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="alert alert-info" style="margin-bottom: 10px;">
-                                    <strong>Cash on Delivery (COD) available</strong><br>
-                                    Pay when your Ganesh murthi is delivered to your doorstep
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block" style="font-size:1.2em;">Submit Prebooking</button>
-                            <div id="form-message" style="margin-top:15px; display:none;"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div style="position:absolute; top:10%; left:0; width:100%; height:80%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; background:rgba(0,0,0,0.35); color:#fff; text-align:center;">
+            <h1 style="font-size:2.2em; font-weight:800; margin-bottom:18px; margin-top:30px; text-shadow:0 2px 8px rgba(0,0,0,0.25);">Pre-Book Your Ganesh Murthi – Across UK Delivery Available!</h1>
+            <h3 style="font-size:1.25em; font-weight:400; margin-bottom:28px; max-width:600px; text-shadow:0 2px 8px rgba(0,0,0,0.18);">Celebrate Ganesh Chaturthi 2025 with regular and eco-friendly idols delivered to your doorstep. Limited stock – book early</h3>
+            <a href="prebook.html" class="btn btn-primary btn-lg" style="font-size:1.3em; padding:12px 38px; border-radius:32px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.18);">Pre-Book Now</a>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="container" style="margin-top:40px; margin-bottom:40px;">
+    <!-- Gallery Section (hidden for now) -->
+    <section id="gallery" class="container" style="margin-top:40px; margin-bottom:40px; display:none;">
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center" style="margin-bottom:30px;">Gallery</h2>
@@ -237,6 +133,35 @@
             </div>
         </div>
     </section>
+    <!-- About Us Section -->
+    <section id="about" class="container" style="margin-top:40px; margin-bottom:40px;">
+        <div class="row" style="background:#f8f9fa; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.07); padding:40px 20px 30px 20px; align-items:center;">
+            <div class="col-md-3 text-center" style="margin-bottom:20px;">
+                <i class="fa fa-users" style="font-size:3.5em; color:#0eb493; margin-bottom:10px;"></i>
+                <h3 style="color:#0eb493; font-weight:700;">Who We Are</h3>
+            </div>
+            <div class="col-md-9">
+                <p style="font-size:1.18em; color:#444; margin-top:10px;">We are dedicated to making Ganesh Chaturthi special for families across the UK by providing high-quality, beautifully crafted Ganesh idols. Our collection includes both regular and eco-friendly options, with a focus on tradition, sustainability, and convenience. With years of experience and a passion for service, we ensure your celebrations are memorable and hassle-free. <span style="color:#0eb493; font-weight:600;">Delivery is available across the UK</span>, and we pride ourselves on customer satisfaction and timely service.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Us Section -->
+    <section id="contact" class="container" style="margin-top:40px; margin-bottom:40px;">
+        <div class="row" style="background:#eafaf4; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.07); padding:40px 20px 30px 20px; align-items:center;">
+            <div class="col-md-3 text-center" style="margin-bottom:20px;">
+                <i class="fa fa-phone" style="font-size:3.5em; color:#25D366; margin-bottom:10px;"></i>
+                <h3 style="color:#25D366; font-weight:700;">Contact Us</h3>
+            </div>
+            <div class="col-md-9">
+                <p style="font-size:1.13em; color:#444; margin-top:10px;">Have questions or want to know more? Reach out to us directly on <a href="https://wa.me/447123456789" target="_blank" style="color:#25D366; font-weight:600;"><i class="fa fa-whatsapp"></i> WhatsApp</a> for a quick response, or email us at <a href="mailto:info@brandi-ganesh.co.uk" style="color:#0eb493; font-weight:600;">info@brandi-ganesh.co.uk</a>.</p>
+                <p style="font-size:1.13em; color:#444;">We’re here to help you with your Ganesh Chaturthi pre-booking and any other queries!</p>
+            </div>
+        </div>
+    </section>
+    <!-- WhatsApp Floating Action Button -->
+    <a href="https://wa.me/447123456789" target="_blank" id="whatsapp-fab" style="position:fixed; bottom:30px; right:30px; z-index:9999; background:#25D366; color:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.18); font-size:2.2em;">
+        <i class="fa fa-whatsapp"></i>
+    </a>
 
     <!-- Scripts -->
     <script src="js/jquery-1.11.1.min.js"></script>
@@ -255,78 +180,6 @@
 
     <script>
         $(document).ready(function() {
-            // Idol type button group logic
-            var sizeData = {
-                normal: {
-                    small: {img: 'img/normal-small.jpg', value: 'normal-small', label: 'Small<br><small>8-9 inches</small>'},
-                    medium: {img: 'img/normal-medium.png', value: 'normal-medium', label: 'Medium<br><small>12-15 inches</small>'},
-                    large: {img: 'img/normal-large.png', value: 'normal-large', label: 'Large<br><small>20-24 inches</small>'},
-                    premium: {img: 'img/normal-premium.jpg', value: 'normal-premium', label: 'Premium<br><small>15-60 inches</small>'}
-                },
-                eco: {
-                    small: {img: 'img/eco-small.jpg', value: 'eco-small', label: 'Small<br><small>8-9 inches</small>'},
-                    medium: {img: 'img/eco-medium.png', value: 'eco-medium', label: 'Medium<br><small>12-15 inches</small>'},
-                    large: {img: 'img/eco-large.png', value: 'eco-large', label: 'Large<br><small>20-24 inches</small>'}
-                }
-            };
-
-            function updateSizes(type) {
-                $('#idol_type').val(type);
-                // Update images, values, and labels
-                $('#size-img-small').attr('src', sizeData[type].small.img);
-                $('#size-img-medium').attr('src', sizeData[type].medium.img);
-                $('#size-img-large').attr('src', sizeData[type].large.img);
-                if(type === 'normal') {
-                    $('#size-img-premium').closest('.col-xs-6').show();
-                    $('#size-img-premium').attr('src', sizeData[type].premium.img);
-                    $('input[name="size"]').eq(3).val(sizeData[type].premium.value);
-                    $('#size-label-premium').html(sizeData[type].premium.label);
-                } else {
-                    $('#size-img-premium').closest('.col-xs-6').hide();
-                }
-                // Update radio values
-                $('input[name="size"]').eq(0).val(sizeData[type].small.value);
-                $('input[name="size"]').eq(1).val(sizeData[type].medium.value);
-                $('input[name="size"]').eq(2).val(sizeData[type].large.value);
-                // Update labels
-                $('#size-label-small').html(sizeData[type].small.label);
-                $('#size-label-medium').html(sizeData[type].medium.label);
-                $('#size-label-large').html(sizeData[type].large.label);
-                // Clear radio selection
-                $('input[name="size"]').prop('checked', false);
-            }
-
-            $('#idolTypeGroup button').click(function() {
-                $('#idolTypeGroup button').removeClass('active');
-                $(this).addClass('active');
-                var type = $(this).data('type');
-                updateSizes(type);
-            });
-
-            // Initial render
-            updateSizes('normal');
-
-            // AJAX form submission
-            $('#prebooking-form').on('submit', function(e) {
-                e.preventDefault();
-                var $form = $(this);
-                var $msg = $('#form-message');
-                $msg.hide().removeClass('alert-success alert-danger');
-                $.ajax({
-                    url: $form.attr('action'),
-                    type: $form.attr('method'),
-                    data: $form.serialize(),
-                    success: function(response) {
-                        $msg.text('Prebooking submitted successfully!').addClass('alert alert-success').show();
-                        $form[0].reset();
-                        updateSizes($('#idol_type').val());
-                    },
-                    error: function() {
-                        $msg.text('There was an error submitting your prebooking. Please try again.').addClass('alert alert-danger').show();
-                    }
-                });
-            });
-
             // WOW animations
             var wow = new WOW({
                 boxClass: 'wow',
@@ -338,66 +191,68 @@
             wow.init();
 
             // Contact form validation
-            $('#prebooking-form').validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 2
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
-                        required: true
-                    },
-                    city: {
-                        required: true
-                    },
-                    size: {
-                        required: true
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter your name",
-                        minlength: "Your name must consist of at least 2 characters"
-                    },
-                    email: {
-                        required: "Please enter your email",
-                        email: "Please enter a valid email address"
-                    },
-                    phone: {
-                        required: "Please enter your phone number"
-                    },
-                    city: {
-                        required: "Please enter your city"
-                    },
-                    size: {
-                        required: "Please select a size"
-                    }
-                },
-                submitHandler: function(form) {
-                    $(form).ajaxSubmit({
-                        type: "POST",
-                        data: $(form).serialize(),
-                        url: "process.php",
-                        success: function() {
-                            $('#prebooking-form :input').attr('disabled', 'disabled');
-                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
-                                $(this).find(':input').attr('disabled', 'disabled');
-                                $(this).find('label').css('cursor', 'default');
-                                $('#form-message').text('Prebooking submitted successfully!').addClass('alert alert-success').show();
-                            });
-                        },
-                        error: function() {
-                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
-                                $('#form-message').text('There was an error submitting your prebooking. Please try again.').addClass('alert alert-danger').show();
-                            });
-                        }
-                    });
-                }
-            });
+            // The prebooking form is now on a separate page, so this validation script is no longer needed here.
+            // Keeping it for now as it might be used elsewhere or for other forms if they are added back.
+            // $('#prebooking-form').validate({
+            //     rules: {
+            //         name: {
+            //             required: true,
+            //             minlength: 2
+            //         },
+            //         email: {
+            //             required: true,
+            //             email: true
+            //         },
+            //         phone: {
+            //             required: true
+            //         },
+            //         city: {
+            //             required: true
+            //         },
+            //         size: {
+            //             required: true
+            //         }
+            //     },
+            //     messages: {
+            //         name: {
+            //             required: "Please enter your name",
+            //             minlength: "Your name must consist of at least 2 characters"
+            //         },
+            //         email: {
+            //             required: "Please enter your email",
+            //             email: "Please enter a valid email address"
+            //         },
+            //         phone: {
+            //             required: "Please enter your phone number"
+            //         },
+            //         city: {
+            //             required: "Please enter your city"
+            //         },
+            //         size: {
+            //             required: "Please select a size"
+            //         }
+            //     },
+            //     submitHandler: function(form) {
+            //         $(form).ajaxSubmit({
+            //             type: "POST",
+            //             data: $(form).serialize(),
+            //             url: "process.php",
+            //             success: function() {
+            //                 $('#prebooking-form :input').attr('disabled', 'disabled');
+            //                 $('#prebooking-form').fadeTo("slow", 0.15, function() {
+            //                     $(this).find(':input').attr('disabled', 'disabled');
+            //                     $(this).find('label').css('cursor', 'default');
+            //                     $('#form-message').text('Prebooking submitted successfully!').addClass('alert alert-success').show();
+            //                 });
+            //             },
+            //             error: function() {
+            //                 $('#prebooking-form').fadeTo("slow", 0.15, function() {
+            //                     $('#form-message').text('There was an error submitting your prebooking. Please try again.').addClass('alert alert-danger').show();
+            //                 });
+            //             }
+            //         });
+            //     }
+            // });
 
             // --- Gallery Dynamic Generation ---
             var galleryImages = [
