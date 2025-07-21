@@ -181,8 +181,8 @@
         </div>
     </section>
     <!-- WhatsApp Floating Action Button -->
-    <a href="https://wa.me/447123456789" target="_blank" id="whatsapp-fab">
-        <i class="fa fa-whatsapp"></i>
+    <a href="https://wa.me/447901241275" target="_blank" id="whatsapp-fab">
+        <img src="img/whatsapp-icon.png" alt="WhatsApp" style="width:36px; height:36px; display:block;">
     </a>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -247,22 +247,20 @@
                     size: { required: "Please select a size" }
                 },
                 submitHandler: function(form) {
-                    $(form).ajaxSubmit({
+                    $.ajax({
                         type: "POST",
-                        data: $(form).serialize(),
                         url: "/api/process",
-                        success: function() {
-                            $('#prebooking-form :input').attr('disabled', 'disabled');
-                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
-                                $(this).find(':input').attr('disabled', 'disabled');
-                                $(this).find('label').css('cursor', 'default');
-                                $('#form-message').text('Prebooking submitted successfully!').addClass('alert alert-success').show();
-                            });
+                        data: $(form).serialize(),
+                        success: function(response) {
+                            if(response.success) {
+                                $('#prebooking-form').hide();
+                                $('#form-message').removeClass('alert-danger').addClass('alert alert-success').html('<h3 style="margin-top:10px;">Thank you!</h3><p>Your prebooking has been submitted successfully.<br>We will contact you soon with further details.</p>').show();
+                            } else {
+                                $('#form-message').removeClass('alert-success').addClass('alert alert-danger').text('There was an error submitting your prebooking. Please try again.').show();
+                            }
                         },
                         error: function() {
-                            $('#prebooking-form').fadeTo("slow", 0.15, function() {
-                                $('#form-message').text('There was an error submitting your prebooking. Please try again.').addClass('alert alert-danger').show();
-                            });
+                            $('#form-message').removeClass('alert-success').addClass('alert alert-danger').text('There was an error submitting your prebooking. Please try again.').show();
                         }
                     });
                 }
