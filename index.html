@@ -12,12 +12,14 @@
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!-- Page Title -->
-    <title>Themefisher.Free Bootstrap3 based HTML5 Templates</title>
+    <title>Brandi Ganesh Chaturthi Prebooking 2025</title>
     <!-- Meta Description -->
-    <meta name="description" content="Blue One Page Creative HTML5 Template">
+    <meta name="description" content="Prebook your Ganesh idol for Ganesh Chaturthi 2025. Choose from eco-friendly and normal idols in various sizes. Cash on Delivery available.">
     <meta name="keywords"
-        content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
-    <meta name="author" content="Muhammad Morshed">
+        content="ganesh chaturthi, prebooking, eco-friendly ganesh, normal ganesh, idol booking, 2025, murthi, cash on delivery, uk, london, hindu festival">
+    <meta name="author" content="Brandi Ganesh Prebooking Team">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo-square.png">
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -86,6 +88,10 @@
     <header id="navigation" class="navbar-fixed-top navbar">
         <div class="container">
             <div class="navbar-header">
+                <!-- Logo -->
+                <a class="navbar-brand" href="#banner" style="padding:0;">
+                    <img src="img/logo-vertical.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px;">
+                </a>
                 <!-- responsive nav button -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -155,10 +161,10 @@
                             <div class="form-group text-center">
                                 <label style="font-size:1.2em;">Idol Type</label><br>
                                 <div class="btn-group" id="idolTypeGroup" role="group" aria-label="Idol Type" style="margin-bottom:15px;">
-                                    <button type="button" class="btn btn-default btn-toggle active" data-type="eco">Eco-Friendly</button>
-                                    <button type="button" class="btn btn-default btn-toggle" data-type="normal">Normal</button>
+                                    <button type="button" class="btn btn-default btn-toggle active" data-type="normal">Normal</button>
+                                    <button type="button" class="btn btn-default btn-toggle" data-type="eco">Eco-Friendly</button>
                                 </div>
-                                <input type="hidden" name="idol_type" id="idol_type" value="eco">
+                                <input type="hidden" name="idol_type" id="idol_type" value="normal">
                             </div>
                             <div class="form-group">
                                 <label style="font-size:1.2em;">Size</label>
@@ -169,37 +175,37 @@
                                 <div class="row" id="sizes-row">
                                     <div class="col-xs-6 col-sm-3 text-center">
                                         <label style="width:100%;">
-                                            <input type="radio" name="size" value="eco-small" required>
+                                            <input type="radio" name="size" value="normal-small" required>
                                             <div class="package-card">
-                                                <img id="size-img-small" src="img/eco-small.jpg" alt="Small">
-                                                <div style="margin-top:5px;" id="size-label-small">Small<br><small>£9 - £20</small></div>
+                                                <img id="size-img-small" src="img/normal-small.jpg" alt="Small">
+                                                <div style="margin-top:5px;" id="size-label-small">Small<br><small>8-9 inches</small></div>
                                             </div>
                                         </label>
                                     </div>
                                     <div class="col-xs-6 col-sm-3 text-center">
                                         <label style="width:100%;">
-                                            <input type="radio" name="size" value="eco-medium">
+                                            <input type="radio" name="size" value="normal-medium">
                                             <div class="package-card">
-                                                <img id="size-img-medium" src="img/eco-medium.jpg" alt="Medium">
-                                                <div style="margin-top:5px;" id="size-label-medium">Medium<br><small>£45 - £100</small></div>
+                                                <img id="size-img-medium" src="img/normal-medium.png" alt="Medium">
+                                                <div style="margin-top:5px;" id="size-label-medium">Medium<br><small>12-15 inches</small></div>
                                             </div>
                                         </label>
                                     </div>
                                     <div class="col-xs-6 col-sm-3 text-center">
                                         <label style="width:100%;">
-                                            <input type="radio" name="size" value="eco-large">
+                                            <input type="radio" name="size" value="normal-large">
                                             <div class="package-card">
-                                                <img id="size-img-large" src="img/eco-large.jpg" alt="Large">
-                                                <div style="margin-top:5px;" id="size-label-large">Large<br><small>£120 - £250</small></div>
+                                                <img id="size-img-large" src="img/normal-large.png" alt="Large">
+                                                <div style="margin-top:5px;" id="size-label-large">Large<br><small>20-24 inches</small></div>
                                             </div>
                                         </label>
                                     </div>
                                     <div class="col-xs-6 col-sm-3 text-center">
                                         <label style="width:100%;">
-                                            <input type="radio" name="size" value="eco-premium">
+                                            <input type="radio" name="size" value="normal-premium">
                                             <div class="package-card">
-                                                <img id="size-img-premium" src="img/eco-premim.jpg" alt="Premium">
-                                                <div style="margin-top:5px;" id="size-label-premium">Premium<br><small>£250 - £1500</small></div>
+                                                <img id="size-img-premium" src="img/normal-premium.jpg" alt="Premium">
+                                                <div style="margin-top:5px;" id="size-label-premium">Premium<br><small>15-60 inches</small></div>
                                             </div>
                                         </label>
                                     </div>
@@ -251,17 +257,16 @@
         $(document).ready(function() {
             // Idol type button group logic
             var sizeData = {
-                eco: {
-                    small: {img: 'img/eco-small.jpg', value: 'eco-small', label: 'Small<br><small>£9 - £20</small>'},
-                    medium: {img: 'img/eco-medium.png', value: 'eco-medium', label: 'Medium<br><small>£45 - £100</small>'},
-                    large: {img: 'img/eco-large.png', value: 'eco-large', label: 'Large<br><small>£120 - £250</small>'},
-                    premium: {img: 'img/eco-premium.png', value: 'eco-premium', label: 'Premium<br><small>£250 - £1500</small>'}
-                },
                 normal: {
-                    small: {img: 'img/normal-small.jpg', value: 'normal-small', label: 'Small<br><small>£9 - £20</small>'},
-                    medium: {img: 'img/normal-medium.png', value: 'normal-medium', label: 'Medium<br><small>£45 - £100</small>'},
-                    large: {img: 'img/normal-large.png', value: 'normal-large', label: 'Large<br><small>£120 - £250</small>'},
-                    premium: {img: 'img/normal-premium.jpg', value: 'normal-premium', label: 'Premium<br><small>£250 - £1500</small>'}
+                    small: {img: 'img/normal-small.jpg', value: 'normal-small', label: 'Small<br><small>8-9 inches</small>'},
+                    medium: {img: 'img/normal-medium.png', value: 'normal-medium', label: 'Medium<br><small>12-15 inches</small>'},
+                    large: {img: 'img/normal-large.png', value: 'normal-large', label: 'Large<br><small>20-24 inches</small>'},
+                    premium: {img: 'img/normal-premium.jpg', value: 'normal-premium', label: 'Premium<br><small>15-60 inches</small>'}
+                },
+                eco: {
+                    small: {img: 'img/eco-small.jpg', value: 'eco-small', label: 'Small<br><small>8-9 inches</small>'},
+                    medium: {img: 'img/eco-medium.png', value: 'eco-medium', label: 'Medium<br><small>12-15 inches</small>'},
+                    large: {img: 'img/eco-large.png', value: 'eco-large', label: 'Large<br><small>20-24 inches</small>'}
                 }
             };
 
@@ -271,17 +276,22 @@
                 $('#size-img-small').attr('src', sizeData[type].small.img);
                 $('#size-img-medium').attr('src', sizeData[type].medium.img);
                 $('#size-img-large').attr('src', sizeData[type].large.img);
-                $('#size-img-premium').attr('src', sizeData[type].premium.img);
+                if(type === 'normal') {
+                    $('#size-img-premium').closest('.col-xs-6').show();
+                    $('#size-img-premium').attr('src', sizeData[type].premium.img);
+                    $('input[name="size"]').eq(3).val(sizeData[type].premium.value);
+                    $('#size-label-premium').html(sizeData[type].premium.label);
+                } else {
+                    $('#size-img-premium').closest('.col-xs-6').hide();
+                }
                 // Update radio values
                 $('input[name="size"]').eq(0).val(sizeData[type].small.value);
                 $('input[name="size"]').eq(1).val(sizeData[type].medium.value);
                 $('input[name="size"]').eq(2).val(sizeData[type].large.value);
-                $('input[name="size"]').eq(3).val(sizeData[type].premium.value);
                 // Update labels
                 $('#size-label-small').html(sizeData[type].small.label);
                 $('#size-label-medium').html(sizeData[type].medium.label);
                 $('#size-label-large').html(sizeData[type].large.label);
-                $('#size-label-premium').html(sizeData[type].premium.label);
                 // Clear radio selection
                 $('input[name="size"]').prop('checked', false);
             }
@@ -294,7 +304,7 @@
             });
 
             // Initial render
-            updateSizes('eco');
+            updateSizes('normal');
 
             // AJAX form submission
             $('#prebooking-form').on('submit', function(e) {
