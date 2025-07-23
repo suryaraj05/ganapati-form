@@ -244,12 +244,12 @@
     <!-- end preloader -->
 
     <!-- Fixed Navigation -->
-    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#fff;">
+    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#222; border-bottom:none; box-shadow:none;">
         <div class="container">
             <div class="navbar-header">
                 <!-- Logo -->
                 <a class="navbar-brand" href="#banner" style="padding:0;">
-                    <img src="img/logo-04-png.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px;">
+                    <img src="img/logo-04-png.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px; filter: drop-shadow(0 0 8px #fff);">
                 </a>
                 <!-- responsive nav button -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -260,11 +260,11 @@
             </div>
             <!-- main nav -->
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                <ul id="nav" class="nav navbar-nav">
-                    <li class="current"><a href="#banner">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="prebook.html" class="external">Pre-book</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                <ul id="nav" class="nav navbar-nav" style="text-align:center;">
+                    <li class="current"><a href="#banner" style="color:#FFD700; font-weight:600; background:none;">Home</a></li>
+                    <li><a href="#about" style="color:#FFD700; font-weight:600; background:none;">About Us</a></li>
+                    <li><a href="prebook.html" class="external" style="color:#FFD700; font-weight:600; background:none;">Pre-book</a></li>
+                    <li><a href="#contact" style="color:#FFD700; font-weight:600; background:none;">Contact Us</a></li>
                 </ul>
             </nav>
             <!-- /main nav -->
@@ -451,6 +451,23 @@
             });
         });
     </script>
+
+    <!-- Footer Section -->
+    <footer class="footer-custom" style="background:#222; color:#fff; padding:32px 0 18px 0; margin-top:40px;">
+        <div class="container">
+            <div class="row" style="align-items:center;">
+                <div class="col-md-6" style="font-size:1.1em;">
+                    <strong>Bharat Mart Limited</strong>, Company number: 16582568
+                </div>
+                <div class="col-md-6 text-md-right text-center" style="margin-top:10px;">
+                    <a href="#banner" style="color:#FFD700; margin:0 16px; font-weight:600; text-decoration:none;">Home</a>
+                    <a href="#about" style="color:#FFD700; margin:0 16px; font-weight:600; text-decoration:none;">About Us</a>
+                    <a href="prebook.html" style="color:#FFD700; margin:0 16px; font-weight:600; text-decoration:none;">Form</a>
+                    <a href="#gallery" style="color:#FFD700; margin:0 16px; font-weight:600; text-decoration:none;">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
 </body>
