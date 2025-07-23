@@ -73,11 +73,31 @@
         </div>
     </header>
     <style>
+        #navigation {
+            background-color: #fff !important;
+        }
         #navigation .navbar-nav > li > a {
-            color: #0EB493 !important;
-            transition: color 0.3s;
+            color: #911F07 !important;
+            transition: none;
         }
         #navigation.navbar-colored .navbar-nav > li > a {
+            color: #911F07 !important;
+        }
+        .btn-toggle.active {
+            background-color: #911F07 !important;
+            color: white !important;
+        }
+        .package-card input[type="radio"]:checked + div {
+            border-color: #911F07;
+            box-shadow: 0 0 8px rgba(145,31,7,0.3);
+        }
+        #whatsapp-fab {
+            background: linear-gradient(90deg, #FFD700 0%, #FFC300 100%) !important;
+            color: #911F07 !important;
+            border: 3px solid #fff;
+        }
+        #whatsapp-fab:hover {
+            background: linear-gradient(90deg, #FFC300 0%, #FFD700 100%) !important;
             color: #fff !important;
         }
     </style>
@@ -201,7 +221,7 @@
         </div>
     </section>
     <!-- WhatsApp Floating Action Button -->
-    <a href="https://wa.me/447901241275" target="_blank" id="whatsapp-fab">
+    <a href="https://wa.me/447901241275" target="_blank" id="whatsapp-fab" style="background:linear-gradient(90deg, #FFD700 0%, #FFC300 100%); color:#911F07; border:3px solid #fff;">
         <img src="img/whatsapp-icon.png" alt="WhatsApp" style="width:36px; height:36px; display:block;">
     </a>
     <script src="js/jquery-1.11.1.min.js"></script>
