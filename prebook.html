@@ -46,12 +46,12 @@
 </head>
 <body>
     <!-- Fixed Navigation -->
-    <header id="navigation" class="navbar-fixed-top navbar">
+    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#fff;">
         <div class="container">
             <div class="navbar-header">
                 <!-- Logo -->
                 <a class="navbar-brand" href="index.html#banner" style="padding:0;">
-                    <img src="img/logo-vertical.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px;">
+                    <img src="img/logo-04-png.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px;">
                 </a>
                 <!-- responsive nav button -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -72,6 +72,26 @@
             <!-- /main nav -->
         </div>
     </header>
+    <style>
+        #navigation .navbar-nav > li > a {
+            color: #0EB493 !important;
+            transition: color 0.3s;
+        }
+        #navigation.navbar-colored .navbar-nav > li > a {
+            color: #fff !important;
+        }
+    </style>
+    <script>
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 400) {
+                $("#navigation").css("background-color","#0EB493");
+                $("#navigation").addClass("navbar-colored");
+            } else {
+                $("#navigation").css("background-color","#fff");
+                $("#navigation").removeClass("navbar-colored");
+            }
+        });
+    </script>
     <section class="container" style="margin-top: 100px; margin-bottom:40px;">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

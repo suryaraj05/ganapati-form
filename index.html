@@ -70,6 +70,25 @@
             border-color: #28a745;
             box-shadow: 0 0 8px rgba(40,167,69,0.3);
         }
+        /* Navbar text color transition */
+        #navigation .navbar-nav > li > a {
+            color: #0EB493 !important;
+            transition: color 0.3s;
+        }
+        #navigation.navbar-colored .navbar-nav > li > a {
+            color: #fff !important;
+        }
+        /* Banner text align right */
+        #banner .banner-text-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            width: 100%;
+            height: 100%;
+            justify-content: flex-start;
+            padding-right: 60px;
+        }
     </style>
 
     <!-- Modernizer Script for old Browsers -->
@@ -85,12 +104,12 @@
     <!-- end preloader -->
 
     <!-- Fixed Navigation -->
-    <header id="navigation" class="navbar-fixed-top navbar">
+    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#fff;">
         <div class="container">
             <div class="navbar-header">
                 <!-- Logo -->
                 <a class="navbar-brand" href="#banner" style="padding:0;">
-                    <img src="img/logo-vertical.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px;">
+                    <img src="img/logo-04-png.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px;">
                 </a>
                 <!-- responsive nav button -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -115,7 +134,7 @@
     <!-- Banner Section -->
     <section id="banner" style="padding:0; margin:0; position:relative;">
         <img src="img/banner-image.jpg" alt="Ganesh Chaturthi Banner" style="width:100%; height:auto; display:block;">
-        <div style="position:absolute; top:10%; left:0; width:100%; height:80%; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; background:rgba(0,0,0,0.35); color:#fff; text-align:center;">
+        <div class="banner-text-right" style="position:absolute; top:10%; left:0; width:100%; height:80%; background:rgba(0,0,0,0.35); color:#fff;">
             <h1 style="font-size:2.2em; font-weight:800; margin-bottom:18px; margin-top:30px; text-shadow:0 2px 8px rgba(0,0,0,0.25);">Pre-Book Your Ganesh Murthi – Across UK Delivery Available!</h1>
             <h3 style="font-size:1.25em; font-weight:400; margin-bottom:28px; max-width:600px; text-shadow:0 2px 8px rgba(0,0,0,0.18);">Celebrate Ganesh Chaturthi 2025 with regular and eco-friendly idols delivered to your doorstep. Limited stock – book early</h3>
             <a href="prebook.html" class="btn btn-primary btn-lg" style="font-size:1.3em; padding:12px 38px; border-radius:32px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.18);">Pre-Book Now</a>
@@ -160,7 +179,7 @@
     </section>
     <!-- WhatsApp Floating Action Button -->
     <a href="https://wa.me/447123456789" target="_blank" id="whatsapp-fab" style="position:fixed; bottom:30px; right:30px; z-index:9999; background:#25D366; color:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.18); font-size:2.2em;">
-        <i class="fa fa-whatsapp"></i>
+        <img src="img/whatsapp-icon.png" alt="WhatsApp" style="width:36px; height:36px; display:block;">
     </a>
 
     <!-- Scripts -->
