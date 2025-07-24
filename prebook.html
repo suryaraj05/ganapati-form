@@ -312,13 +312,13 @@
                 <div id="wizard-step-2" style="display:none;">
                     <div class="wizard-title">Select Idol Type & Size</div>
                     <div class="idols-list">
+                        <div class="idol-option selected" data-value="Normal">Normal</div>
                         <div class="idol-option" data-value="Eco-Friendly">Eco-Friendly</div>
-                        <div class="idol-option" data-value="Normal">Normal</div>
-                        <!-- <div class="idol-option" data-value="Premium">Premium</div> -->
+                        <div class="idol-option" data-value="Premium">Premium</div>
                     </div>
-                    <input type="hidden" name="idol_type" id="idol_type" required />
+                    <input type="hidden" name="idol_type" id="idol_type" value="Normal" required />
                     <!-- Size selection for Normal -->
-                    <div id="size-options-normal" class="sizes-row" style="display:none; margin-bottom:18px;">
+                    <div id="size-options-normal" class="sizes-row" style="display:block; margin-bottom:18px;">
                         <div class="row">
                             <div class="col-xs-6 col-sm-3 text-center">
                                 <label style="width:100%;">
@@ -423,6 +423,16 @@
                 // Uncheck all size radios
                 document.querySelectorAll('input[name="size"]').forEach(function(radio) { radio.checked = false; });
             };
+        });
+        // On page load, set Normal as default
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('idol_type').value = 'Normal';
+            document.getElementById('size-options-normal').style.display = 'block';
+            document.getElementById('size-options-eco').style.display = 'none';
+            document.querySelectorAll('.idol-option').forEach(function(opt) {
+                if(opt.getAttribute('data-value') === 'Normal') opt.classList.add('selected');
+                else opt.classList.remove('selected');
+            });
         });
         // Prevent submit if idol_type or size not selected
         document.getElementById('prebooking-form').onsubmit = function(e) {
