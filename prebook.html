@@ -186,9 +186,34 @@
             background: #FFF6E0;
         }
         @media (max-width: 900px) {
-            .wizard-card { flex-direction: column; }
-            .wizard-image, .wizard-form { min-width: 100%; }
-            .wizard-image { min-height: 220px; }
+            .wizard-container {
+                position: relative;
+                width: 100vw;
+                height: auto;
+                min-height: 100vh;
+                padding: 16px 0;
+                overflow-y: auto;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+            }
+            .wizard-card {
+                flex-direction: column;
+                min-width: 0;
+                width: 100%;
+                max-width: 98vw;
+                min-height: 0;
+                max-height: none;
+                box-sizing: border-box;
+            }
+            .wizard-image, .wizard-form {
+                min-width: 100%;
+                width: 100%;
+            }
+            .wizard-image {
+                min-height: 180px;
+                height: 180px;
+            }
         }
     </style>
 </head>
