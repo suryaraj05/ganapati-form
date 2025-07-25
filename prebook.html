@@ -42,7 +42,7 @@
             right: 8px;
             width: 10px;
             height: 10px;
-            background: #911F07;
+            background: #28a745;
             border-radius: 50%;
             box-shadow: 0 0 0 2px #FFD700;
         }
@@ -218,7 +218,7 @@
         .wizard-form .idol-option {
             flex: 1;
             background: #faf7f4;
-            border: 2px solid #FFD700;
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
             padding: 16px 10px;
             text-align: center;
@@ -269,7 +269,7 @@
 </head>
 <body>
     <!-- Fixed Navigation -->
-    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#fff;">
+    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#F5E488;">
         <div class="container">
             <div class="navbar-header">
                 <!-- Logo -->
@@ -297,7 +297,7 @@
     </header>
     <style>
         #navigation {
-            background-color: #fff !important;
+            background-color: #F5E488 !important;
         }
         #navigation .navbar-nav > li > a {
             color: #911F07 !important;
@@ -376,8 +376,8 @@
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
                                         <img src="img/normal-small.jpg" alt="Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Small 8'</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>86</span></div>
-                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Small 8\'','£18','Available','86')">Full Info</button>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>86</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Small 8\'','£18','Available','86')">Details</button>
                                     </div>
                                 </label>
                             </div>
@@ -387,8 +387,8 @@
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
                                         <img src="img/normal-large.png" alt="Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Large (18' - 24')</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>23</span></div>
-                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Large (18\' - 24\')','£210 - £350','Available','23')">Full Info</button>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>23</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Large (18\' - 24\')','£210 - £350','Available','23')">Details</button>
                                     </div>
                                 </label>
                             </div>
@@ -398,8 +398,8 @@
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
                                         <img src="img/normal-premium.jpg" alt="Customized" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Customized</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>On request</span></div>
-                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Customized','To be defined','Available','On request')">Full Info</button>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>On request</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Customized','To be defined','Available','On request')">Details</button>
                                     </div>
                                 </label>
                             </div>
@@ -414,8 +414,8 @@
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
                                         <img src="img/normal-small.jpg" alt="Premium Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Small 8'</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>36</span></div>
-                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Small 8\'','£30','Available','36')">Full Info</button>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>36</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Small 8\'','£30','Available','36')">Details</button>
                                             </div>
                                         </label>
                                     </div>
@@ -425,8 +425,8 @@
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
                                         <img src="img/normal-premium.jpg" alt="Premium Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Large (18' - 24')</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>11</span></div>
-                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Large (18\' - 24\')','£275 - £550','Available','11')">Full Info</button>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>11</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Large (18\' - 24\')','£275 - £550','Available','11')">Details</button>
                                             </div>
                                         </label>
                                     </div>
@@ -440,15 +440,15 @@
                                     <img src="img/eco-small.jpg" alt="Eco Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                     <div>Small 8'</div>
                                     <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:red;">Sold Out</span></div>
-                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Small 8\'','£22','Sold Out','0')">Full Info</button>
+                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Small 8\'','£22','Sold Out','0')">Details</button>
                                 </div>
                             </div>
                             <div class="col-xs-6 text-center">
                                 <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
                                     <img src="img/eco-large.png" alt="Eco Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                     <div>Large (18' - 24')</div>
-                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:green;">34</span></div>
-                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Available','34')">Full Info</button>
+                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:#1d6167;">34</span></div>
+                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Available','34')">Details</button>
                                 </div>
                             </div>
                         </div>
