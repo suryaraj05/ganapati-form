@@ -338,7 +338,7 @@
                     <input type="email" id="email" name="email" placeholder="email@example.com" required />
                     <label for="phone">Phone</label>
                     <input type="tel" id="phone" name="phone" placeholder="Phone number" required />
-                    <label for="city">City</label>
+                    <label for="city">City/Place</label>
                     <input type="text" id="city" name="city" placeholder="Your city" required />
                     <button type="button" class="wizard-btn" id="to-step-2">Next</button>
                 </div>
@@ -430,8 +430,8 @@
                                 <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
                                     <img src="img/eco-large.png" alt="Eco Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                     <div>Large (18' - 24')</div>
-                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:red;">Sold Out</span></div>
-                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Sold Out','0')">Full Info</button>
+                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:green;">34</span></div>
+                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Available','34')">Full Info</button>
                                 </div>
                             </div>
                         </div>
@@ -509,6 +509,12 @@
                 if(opt.getAttribute('data-value') === 'Normal') opt.classList.add('selected');
                 else opt.classList.remove('selected');
             });
+            // Select the first size option by default
+            var firstNormal = document.querySelector('#size-options-normal input[type="radio"]');
+            if(firstNormal) {
+                firstNormal.checked = true;
+                firstNormal.parentElement.querySelector('.package-card').classList.add('selected');
+            }
         });
         // Prevent submit if idol_type or size not selected
         document.getElementById('prebooking-form').onsubmit = function(e) {
@@ -632,10 +638,23 @@
     <script>
         function showInfoModal(type, size, cost, available, number) {
             var html = '<div style="font-size:1.2em; font-weight:700; margin-bottom:10px;">' + type + ' - ' + size + '</div>';
-            if(type === 'Normal' && size === 'Customized') {
-                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">Any height available (custom order)</div>';
+            // Add new concise, attractive description and shipping note
+            if(type === 'Normal' && size === "Small 8'") {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">🕉 Classic POP Ganesh idol for home pooja or gifting.</div>';
+            } else if(type === 'Normal' && size.indexOf('Large') !== -1) {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">🕉 Neatly crafted POP Murthi perfect for family, gifting or small group celebrations.</div>';
+            } else if(type === 'Normal' && size === 'Customized') {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">✨ Get your Ganesh Murthi of above 2.5 ft to 4ft shipped specially for your celebration.</div>';
+            } else if(type === 'Premium' && size === "Small 8'") {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">💎 Elegant idol with artistic rich finish idol, ideal for decor or gifting.</div>';
+            } else if(type === 'Premium' && size.indexOf('Large') !== -1) {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">💎 Tastefully detailed Murthi for those who seek festive beauty with a premium touch and artwork.</div>';
+            } else if(type === 'Eco-Friendly' && size === "Small 8'") {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">🌿 Eco-clay Ganesh for a simple, eco-conscious home celebration.</div>';
+            } else if(type === 'Eco-Friendly' && size.indexOf('Large') !== -1) {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">🌿 Eco-friendly idol, great for families or eco conscious group celebrations.</div>';
             }
-            html += '<div><strong>Cost:</strong> <span style="color:green; font-weight:600;">' + cost + '</span></div>';
+            html += '<div><strong>Cost:</strong> <span style="color:green; font-weight:600;">' + cost + '</span> <span style="color:#911F07; font-size:0.97em;">(shipping included)</span></div>';
             html += '<div><strong>Available:</strong> <span style="color:' + (available === 'Sold Out' ? 'red' : 'green') + '; font-weight:400;">' + available + '</span></div>';
             if(number && number !== 'On request') html += '<div><strong>No. Available:</strong> <span style="color:green; font-weight:400;">' + (available === 'Sold Out' ? '0' : number) + '</span></div>';
             document.getElementById('info-modal-body').innerHTML = html;
