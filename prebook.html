@@ -15,9 +15,43 @@
         .btn-toggle { transition: all 0.3s ease; }
         .btn-toggle.active { background-color: #28a745 !important; color: white !important; }
         .package-card img { aspect-ratio: 1/1; object-fit: cover; width: 100%; border-radius: 6px; background: #fff; }
-        .package-card { padding: 10px; border: 1px solid #eee; border-radius: 8px; margin-top: 5px; transition: all 0.3s ease; }
+        .package-card {
+            padding: 4px 2px 6px 2px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            margin-top: 4px;
+            transition: all 0.3s ease;
+            max-width: 140px;
+            min-width: 110px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .package-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .package-card input[type="radio"]:checked + div { border-color: #28a745; box-shadow: 0 0 8px rgba(40,167,69,0.3); }
+        .package-card.selected {
+            border: 2.5px solid #FFD700;
+            background: #FFF9E3;
+            box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+        }
+        .full-info-btn {
+            display: inline-block;
+            margin-top: 2px;
+            color: #911F07;
+            background: #fffbe6;
+            border: 1.2px solid #FFD700;
+            border-radius: 14px;
+            padding: 1px 7px 1px 6px;
+            font-size: 0.91em;
+            font-weight: 400;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, border 0.2s;
+            box-shadow: none;
+        }
+        .full-info-btn:hover {
+            background: #FFF3B0;
+            border-color: #FFC300;
+        }
         /* WhatsApp FAB styling for clarity */
         #whatsapp-fab {
             position: fixed;
@@ -289,18 +323,18 @@
         <div class="wizard-card">
             <div class="wizard-image">
                 <img src="img/ganesh-banner.jpg" alt="Ganesh Reference" />
-            </div>
+                                    </div>
             <form class="wizard-form" id="prebooking-form" action="/api/process" method="post">
                 <div class="wizard-step-indicator">
                     <div class="wizard-step-dot active" id="step-dot-1"></div>
                     <div class="wizard-step-line"></div>
                     <div class="wizard-step-dot" id="step-dot-2"></div>
-                </div>
+                                </div>
                 <div id="wizard-step-1">
                     <div class="wizard-title">Prebooking</div>
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Your full name" required />
-                    <label for="email">Email</label>
+                                        <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="email@example.com" required />
                     <label for="phone">Phone</label>
                     <input type="tel" id="phone" name="phone" placeholder="Phone number" required />
@@ -318,69 +352,37 @@
                     <input type="hidden" name="idol_type" id="idol_type" value="Normal" required />
                     <!-- Size selection for Normal -->
                     <div id="size-options-normal" class="sizes-row" style="display:block; margin-bottom:18px;">
-                        <div class="row">
-                            <div class="col-xs-4 text-center">
-                                <label style="width:100%;">
-                                    <input type="radio" name="size" value="normal-small" required>
-                                    <div class="package-card">
-                                        <img src="img/normal-small.jpg" alt="Small" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
-                                        <div>Small</div>
-                                        <div style="margin-top:5px;">Cost: <span style="color:green; font-weight:600;">£50</span></div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 16px 10px; justify-content: center; align-items: stretch;">
+                            <div style="flex: 1 1 120px; max-width: 140px; min-width: 110px; text-align: center;">
+                                <label style="width:100%; cursor:pointer;">
+                                    <input type="radio" name="size" value="normal-small" style="display:none;">
+                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
+                                        <img src="img/normal-small.jpg" alt="Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <div>Small 8'</div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>86</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Small 8\'','£18','Available','86')">Full Info</button>
                                     </div>
                                 </label>
                             </div>
-                            <div class="col-xs-4 text-center">
-                                <label style="width:100%;">
-                                    <input type="radio" name="size" value="normal-large">
-                                    <div class="package-card">
-                                        <img src="img/normal-large.png" alt="Large" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
-                                        <div>Large</div>
-                                        <div style="margin-top:5px;">Cost: <span style="color:green; font-weight:600;">£100</span></div>
+                            <div style="flex: 1 1 120px; max-width: 140px; min-width: 110px; text-align: center;">
+                                <label style="width:100%; cursor:pointer;">
+                                    <input type="radio" name="size" value="normal-large" style="display:none;">
+                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
+                                        <img src="img/normal-large.png" alt="Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <div>Large (18' - 24')</div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>23</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Large (18\' - 24\')','£210 - £350','Available','23')">Full Info</button>
                                     </div>
                                 </label>
                             </div>
-                            <div class="col-xs-4 text-center">
-                                <label style="width:100%;">
-                                    <input type="radio" name="size" value="normal-customized">
-                                    <div class="package-card">
-                                        <img src="img/normal-premium.jpg" alt="Customized" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
-                                        <div>Customized (any height)</div>
-                                        <div style="margin-top:5px;">Cost: <span style="color:green; font-weight:600;">£200</span></div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Size selection for Eco-Friendly -->
-                    <div id="size-options-eco" class="sizes-row" style="display:none; margin-bottom:18px;">
-                        <div class="row">
-                            <div class="col-xs-4 text-center">
-                                <label style="width:100%; cursor:not-allowed; opacity:0.7;">
-                                    <input type="radio" name="size" value="eco-small" disabled>
-                                    <div class="package-card">
-                                        <img src="img/eco-small.jpg" alt="Eco Small" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
-                                        <div>Small</div>
-                                        <div style="margin-top:5px; color:green; font-weight:700;">Sold</div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <label style="width:100%; cursor:not-allowed; opacity:0.7;">
-                                    <input type="radio" name="size" value="eco-medium" disabled>
-                                    <div class="package-card">
-                                        <img src="img/eco-medium.png" alt="Eco Medium" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
-                                        <div>Medium</div>
-                                        <div style="margin-top:5px; color:green; font-weight:700;">Sold</div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <label style="width:100%; cursor:not-allowed; opacity:0.7;">
-                                    <input type="radio" name="size" value="eco-large" disabled>
-                                    <div class="package-card">
-                                        <img src="img/eco-large.png" alt="Eco Large" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
-                                        <div>Large</div>
-                                        <div style="margin-top:5px; color:green; font-weight:700;">Sold</div>
+                            <div style="flex: 1 1 120px; max-width: 140px; min-width: 110px; text-align: center;">
+                                <label style="width:100%; cursor:pointer;">
+                                    <input type="radio" name="size" value="normal-customized" style="display:none;">
+                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
+                                        <img src="img/normal-premium.jpg" alt="Customized" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <div>Customized</div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>On request</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Customized','To be defined','Available','On request')">Full Info</button>
                                     </div>
                                 </label>
                             </div>
@@ -389,16 +391,48 @@
                     <!-- Size selection for Premium -->
                     <div id="size-options-premium" class="sizes-row" style="display:none; margin-bottom:18px;">
                         <div class="row">
-                            <div class="col-xs-12 text-center">
-                                <label style="width:100%;">
-                                    <input type="radio" name="size" value="premium-luxury" required>
-                                    <div class="package-card">
-                                        <img src="img/normal-premium.jpg" alt="Luxury Premium" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
-                                        <div>Luxury Premium</div>
-                                        <div style="font-size:0.95em; color:#911F07; margin:4px 0 6px 0;">Highly crafted and visually appealing</div>
-                                        <div style="margin-top:5px;">Cost: <span style="color:green; font-weight:600;">£500</span></div>
+                            <div class="col-xs-6 text-center">
+                                <label style="width:100%; cursor:pointer;">
+                                    <input type="radio" name="size" value="premium-small" style="display:none;">
+                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
+                                        <img src="img/normal-small.jpg" alt="Premium Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <div>Small 8'</div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>36</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Small 8\'','£30','Available','36')">Full Info</button>
+                                            </div>
+                                        </label>
                                     </div>
-                                </label>
+                            <div class="col-xs-6 text-center">
+                                <label style="width:100%; cursor:pointer;">
+                                    <input type="radio" name="size" value="premium-large" style="display:none;">
+                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
+                                        <img src="img/normal-premium.jpg" alt="Premium Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <div>Large (18' - 24')</div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>11</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Large (18\' - 24\')','£275 - £550','Available','11')">Full Info</button>
+                                            </div>
+                                        </label>
+                                    </div>
+                                            </div>
+                                    </div>
+                    <!-- Size selection for Eco-Friendly -->
+                    <div id="size-options-eco" class="sizes-row" style="display:none; margin-bottom:18px;">
+                        <div class="row">
+                            <div class="col-xs-6 text-center">
+                                <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
+                                    <img src="img/eco-small.jpg" alt="Eco Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <div>Small 8'</div>
+                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:red;">Sold Out</span></div>
+                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Small 8\'','£22','Sold Out','0')">Full Info</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
+                                    <img src="img/eco-large.png" alt="Eco Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <div>Large (18' - 24')</div>
+                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:red;">Sold Out</span></div>
+                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Sold Out','0')">Full Info</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -413,6 +447,15 @@
             <strong>Thank you for submitting!</strong><br>We will reach you soon.
             <br><br>
             <button onclick="document.getElementById('thankyou-popup').style.display='none'" style="margin-top:18px; background:#FFD700; color:#911F07; border:none; border-radius:8px; padding:10px 28px; font-weight:600; font-size:1em;">Close</button>
+                </div>
+            </div>
+    <!-- Add modal container -->
+    <div id="info-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
+        <div id="info-modal-content" style="background:#fff; color:#911F07; border-radius:16px; padding:32px 22px; max-width:90vw; margin:0 auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); font-size:1.1em; text-align:left; min-width:220px; min-height:120px;">
+            <div id="info-modal-body"></div>
+            <div style="text-align:center; margin-top:18px;">
+                <button onclick="document.getElementById('info-modal').style.display='none'" style="background:#FFD700; color:#911F07; border:none; border-radius:8px; padding:8px 22px; font-weight:600; font-size:1em;">Close</button>
+            </div>
         </div>
     </div>
     <script>
@@ -585,6 +628,19 @@
                 }
             });
         });
+    </script>
+    <script>
+        function showInfoModal(type, size, cost, available, number) {
+            var html = '<div style="font-size:1.2em; font-weight:700; margin-bottom:10px;">' + type + ' - ' + size + '</div>';
+            if(type === 'Normal' && size === 'Customized') {
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">Any height available (custom order)</div>';
+            }
+            html += '<div><strong>Cost:</strong> <span style="color:green; font-weight:600;">' + cost + '</span></div>';
+            html += '<div><strong>Available:</strong> <span style="color:' + (available === 'Sold Out' ? 'red' : 'green') + '; font-weight:400;">' + available + '</span></div>';
+            if(number && number !== 'On request') html += '<div><strong>No. Available:</strong> <span style="color:green; font-weight:400;">' + (available === 'Sold Out' ? '0' : number) + '</span></div>';
+            document.getElementById('info-modal-body').innerHTML = html;
+            document.getElementById('info-modal').style.display = 'flex';
+        }
     </script>
 </body>
 </html> 
