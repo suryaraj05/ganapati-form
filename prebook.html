@@ -25,13 +25,26 @@
             min-width: 110px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
         }
         .package-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .package-card input[type="radio"]:checked + div { border-color: #28a745; box-shadow: 0 0 8px rgba(40,167,69,0.3); }
         .package-card.selected {
-            border: 2.5px solid #FFD700;
+            border: 1px solid #FFD700;
             background: #FFF9E3;
             box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+        }
+        .package-card.selected::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 10px;
+            height: 10px;
+            background: #911F07;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #FFD700;
         }
         .full-info-btn {
             display: inline-block;
@@ -213,10 +226,14 @@
             color: #911F07;
             font-weight: 400;
             transition: border 0.2s, background 0.2s;
+            position: relative;
         }
         .wizard-form .idol-option.selected, .wizard-form .idol-option:hover {
-            border: 2.5px solid #911F07;
+            border: 2px solid #FFD700;
             background: #FFF6E0;
+        }
+        .wizard-form .idol-option.selected::after {
+            content: none;
         }
         @media (max-width: 900px) {
             .wizard-container {
@@ -640,9 +657,9 @@
             var html = '<div style="font-size:1.2em; font-weight:700; margin-bottom:10px;">' + type + ' - ' + size + '</div>';
             // Add new concise, attractive description and shipping note
             if(type === 'Normal' && size === "Small 8'") {
-                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">🕉 Classic POP Ganesh idol for home pooja or gifting.</div>';
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">✨ Classic POP Ganesh idol for home pooja or gifting.</div>';
             } else if(type === 'Normal' && size.indexOf('Large') !== -1) {
-                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">🕉 Neatly crafted POP Murthi perfect for family, gifting or small group celebrations.</div>';
+                html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">✨ Neatly crafted POP Murthi perfect for family, gifting or small group celebrations.</div>';
             } else if(type === 'Normal' && size === 'Customized') {
                 html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">✨ Get your Ganesh Murthi of above 2.5 ft to 4ft shipped specially for your celebration.</div>';
             } else if(type === 'Premium' && size === "Small 8'") {
