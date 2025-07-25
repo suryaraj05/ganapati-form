@@ -139,8 +139,7 @@
             border-bottom: 2px solid #FFD700;
             background: #faf7f4;
             font-size: 1em;
-            color: #911F07;
-            font-weight: 400;
+            color: #111;
             border-radius: 0;
             outline: none;
             transition: border-color 0.2s;
@@ -320,39 +319,33 @@
                     <!-- Size selection for Normal -->
                     <div id="size-options-normal" class="sizes-row" style="display:block; margin-bottom:18px;">
                         <div class="row">
-                            <div class="col-xs-6 col-sm-3 text-center">
+                            <div class="col-xs-4 text-center">
                                 <label style="width:100%;">
                                     <input type="radio" name="size" value="normal-small" required>
                                     <div class="package-card">
-                                        <img src="img/normal-small.jpg" alt="Small">
-                                        <div style="margin-top:5px;">Small<br><small>8-9 inches</small></div>
+                                        <img src="img/normal-small.jpg" alt="Small" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
+                                        <div>Small</div>
+                                        <div style="margin-top:5px;">Cost: <span style="color:#111; font-weight:600;">£50</span></div>
                                     </div>
                                 </label>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-center">
-                                <label style="width:100%;">
-                                    <input type="radio" name="size" value="normal-medium">
-                                    <div class="package-card">
-                                        <img src="img/normal-medium.png" alt="Medium">
-                                        <div style="margin-top:5px;">Medium<br><small>12-15 inches</small></div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-xs-6 col-sm-3 text-center">
+                            <div class="col-xs-4 text-center">
                                 <label style="width:100%;">
                                     <input type="radio" name="size" value="normal-large">
                                     <div class="package-card">
-                                        <img src="img/normal-large.png" alt="Large">
-                                        <div style="margin-top:5px;">Large<br><small>20-24 inches</small></div>
+                                        <img src="img/normal-large.png" alt="Large" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
+                                        <div>Large</div>
+                                        <div style="margin-top:5px;">Cost: <span style="color:#111; font-weight:600;">£100</span></div>
                                     </div>
                                 </label>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-center">
+                            <div class="col-xs-4 text-center">
                                 <label style="width:100%;">
-                                    <input type="radio" name="size" value="normal-premium">
+                                    <input type="radio" name="size" value="normal-customized">
                                     <div class="package-card">
-                                        <img src="img/normal-premium.jpg" alt="Premium">
-                                        <div style="margin-top:5px;">Premium<br><small>15-60 inches</small></div>
+                                        <img src="img/normal-premium.jpg" alt="Customized" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
+                                        <div>Customized (any height)</div>
+                                        <div style="margin-top:5px;">Cost: <span style="color:#111; font-weight:600;">£200</span></div>
                                     </div>
                                 </label>
                             </div>
@@ -361,30 +354,49 @@
                     <!-- Size selection for Eco-Friendly -->
                     <div id="size-options-eco" class="sizes-row" style="display:none; margin-bottom:18px;">
                         <div class="row">
-                            <div class="col-xs-6 col-sm-4 text-center">
+                            <div class="col-xs-4 text-center">
                                 <label style="width:100%;">
                                     <input type="radio" name="size" value="eco-small" required>
                                     <div class="package-card">
-                                        <img src="img/eco-small.jpg" alt="Eco Small">
-                                        <div style="margin-top:5px;">Small<br><small>8-9 inches</small></div>
+                                        <img src="img/eco-small.jpg" alt="Eco Small" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
+                                        <div>Small</div>
+                                        <div style="margin-top:5px;">Cost: <span style="color:#111; font-weight:600;">£60</span></div>
                                     </div>
                                 </label>
                             </div>
-                            <div class="col-xs-6 col-sm-4 text-center">
+                            <div class="col-xs-4 text-center">
                                 <label style="width:100%;">
                                     <input type="radio" name="size" value="eco-medium">
                                     <div class="package-card">
-                                        <img src="img/eco-medium.png" alt="Eco Medium">
-                                        <div style="margin-top:5px;">Medium<br><small>12-15 inches</small></div>
+                                        <img src="img/eco-medium.png" alt="Eco Medium" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
+                                        <div>Medium</div>
+                                        <div style="margin-top:5px;">Cost: <span style="color:#111; font-weight:600;">£120</span></div>
                                     </div>
                                 </label>
                             </div>
-                            <div class="col-xs-6 col-sm-4 text-center">
+                            <div class="col-xs-4 text-center">
                                 <label style="width:100%;">
                                     <input type="radio" name="size" value="eco-large">
                                     <div class="package-card">
-                                        <img src="img/eco-large.png" alt="Eco Large">
-                                        <div style="margin-top:5px;">Large<br><small>20-24 inches</small></div>
+                                        <img src="img/eco-large.png" alt="Eco Large" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
+                                        <div>Large</div>
+                                        <div style="margin-top:5px;">Cost: <span style="color:#111; font-weight:600;">£180</span></div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Size selection for Premium -->
+                    <div id="size-options-premium" class="sizes-row" style="display:none; margin-bottom:18px;">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <label style="width:100%;">
+                                    <input type="radio" name="size" value="premium-luxury" required>
+                                    <div class="package-card">
+                                        <img src="img/normal-premium.jpg" alt="Luxury Premium" style="width:100%; max-width:90px; height:auto; margin-bottom:6px;">
+                                        <div>Luxury Premium</div>
+                                        <div style="font-size:0.95em; color:#911F07; margin:4px 0 6px 0;">Highly crafted and visually appealing</div>
+                                        <div style="margin-top:5px;">Cost: <span style="color:#111; font-weight:600;">£500</span></div>
                                     </div>
                                 </label>
                             </div>
@@ -396,9 +408,28 @@
             </form>
         </div>
     </div>
+    <div id="thankyou-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
+        <div style="background:#fff; color:#911F07; border-radius:16px; padding:40px 28px; max-width:90vw; margin:0 auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); font-size:1.3em; text-align:center;">
+            <strong>Thank you for submitting!</strong><br>We will reach you soon.
+            <br><br>
+            <button onclick="document.getElementById('thankyou-popup').style.display='none'" style="margin-top:18px; background:#FFD700; color:#911F07; border:none; border-radius:8px; padding:10px 28px; font-weight:600; font-size:1em;">Close</button>
+        </div>
+    </div>
     <script>
         // Wizard step logic
         document.getElementById('to-step-2').onclick = function() {
+            // Validate all fields in step 1
+            var valid = true;
+            ['name','email','phone','city'].forEach(function(id) {
+                var el = document.getElementById(id);
+                if(!el.value) {
+                    el.style.borderBottom = '2px solid #c0392b';
+                    valid = false;
+                } else {
+                    el.style.borderBottom = '2px solid #FFD700';
+                }
+            });
+            if(!valid) return;
             document.getElementById('wizard-step-1').style.display = 'none';
             document.getElementById('wizard-step-2').style.display = 'block';
             document.getElementById('step-dot-1').classList.remove('active');
@@ -418,8 +449,9 @@
                 document.getElementById('idol_type').value = el.getAttribute('data-value');
                 // Show/hide size options
                 var idolType = el.getAttribute('data-value');
-                document.getElementById('size-options-normal').style.display = (idolType === 'Normal' || idolType === 'Premium') ? 'block' : 'none';
+                document.getElementById('size-options-normal').style.display = (idolType === 'Normal') ? 'block' : 'none';
                 document.getElementById('size-options-eco').style.display = (idolType === 'Eco-Friendly') ? 'block' : 'none';
+                document.getElementById('size-options-premium').style.display = (idolType === 'Premium') ? 'block' : 'none';
                 // Uncheck all size radios
                 document.querySelectorAll('input[name="size"]').forEach(function(radio) { radio.checked = false; });
             };
@@ -429,6 +461,7 @@
             document.getElementById('idol_type').value = 'Normal';
             document.getElementById('size-options-normal').style.display = 'block';
             document.getElementById('size-options-eco').style.display = 'none';
+            document.getElementById('size-options-premium').style.display = 'none';
             document.querySelectorAll('.idol-option').forEach(function(opt) {
                 if(opt.getAttribute('data-value') === 'Normal') opt.classList.add('selected');
                 else opt.classList.remove('selected');
@@ -442,8 +475,10 @@
             }
             var idolType = document.getElementById('idol_type').value;
             var sizeSelected = false;
-            if (idolType === 'Normal' || idolType === 'Premium') {
+            if (idolType === 'Normal') {
                 document.querySelectorAll('#size-options-normal input[name="size"]').forEach(function(radio) { if (radio.checked) sizeSelected = true; });
+            } else if (idolType === 'Premium') {
+                document.querySelectorAll('#size-options-premium input[name="size"]').forEach(function(radio) { if (radio.checked) sizeSelected = true; });
             } else if (idolType === 'Eco-Friendly') {
                 document.querySelectorAll('#size-options-eco input[name="size"]').forEach(function(radio) { if (radio.checked) sizeSelected = true; });
             }
@@ -452,6 +487,14 @@
                 e.preventDefault();
             }
         };
+        // Show thank you popup on submit
+        document.getElementById('prebooking-form').addEventListener('submit', function(e) {
+            if (!e.defaultPrevented) {
+                setTimeout(function() {
+                    document.getElementById('thankyou-popup').style.display = 'flex';
+                }, 100);
+            }
+        });
     </script>
     <!-- WhatsApp Floating Action Button -->
     <a href="https://wa.me/447901241275" target="_blank" id="whatsapp-fab" style="background:linear-gradient(90deg, #FFD700 0%, #FFC300 100%); color:#911F07; border:3px solid #fff;">
