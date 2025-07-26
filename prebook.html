@@ -20,19 +20,27 @@
             border: 1px solid #eee;
             border-radius: 6px;
             margin-top: 4px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             max-width: 140px;
             min-width: 110px;
             margin-left: auto;
             margin-right: auto;
             position: relative;
+            transform: scale(1);
         }
-        .package-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .package-card input[type="radio"]:checked + div { border-color: #28a745; box-shadow: 0 0 8px rgba(40,167,69,0.3); }
+        .package-card:hover { 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-2px) scale(1.02);
+        }
+        .package-card input[type="radio"]:checked + div { 
+            border-color: #28a745; 
+            box-shadow: 0 0 8px rgba(40,167,69,0.3); 
+        }
         .package-card.selected {
             border: 1px solid #FFD700;
             background: #FFF9E3;
-            box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+            box-shadow: 0 4px 15px rgba(255,215,0,0.2);
+            transform: translateY(-1px) scale(1.01);
         }
         .package-card.selected::after {
             content: '';
@@ -189,10 +197,13 @@
             color: #111;
             border-radius: 0;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: scale(1);
         }
         .wizard-form input:focus, .wizard-form select:focus {
             border-bottom: 2.5px solid #911F07;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.1);
         }
         .wizard-form .wizard-btn {
             background: linear-gradient(90deg, #FFD700 0%, #FFC300 100%);
@@ -204,17 +215,51 @@
             font-size: 1.1em;
             margin-top: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: background 0.2s, color 0.2s;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: scale(1);
+            position: relative;
+            overflow: hidden;
         }
         .wizard-form .wizard-btn:hover {
             background: linear-gradient(90deg, #FFC300 0%, #FFD700 100%);
             color: #fff;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+        .wizard-form .wizard-btn:active {
+            transform: translateY(0) scale(0.98);
         }
         .wizard-form .idols-list {
             display: flex;
             gap: 18px;
             margin-bottom: 18px;
         }
+
+        /* Smooth transitions for wizard steps */
+        .wizard-step {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        .wizard-step.hidden {
+            opacity: 0;
+            transform: translateX(30px) scale(0.95);
+            pointer-events: none;
+        }
+        /* Smooth transitions for size options */
+        .sizes-row {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        .sizes-row.hidden {
+            opacity: 0;
+            transform: translateY(15px) scale(0.98);
+            pointer-events: none;
+        }
+        /* Enhanced idol option transitions */
         .wizard-form .idol-option {
             flex: 1;
             background: #faf7f4;
@@ -225,15 +270,38 @@
             cursor: pointer;
             color: #911F07;
             font-weight: 400;
-            transition: border 0.2s, background 0.2s;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
+            transform: scale(1);
         }
-        .wizard-form .idol-option.selected, .wizard-form .idol-option:hover {
+        .wizard-form .idol-option:hover {
             border: 2px solid #FFD700;
             background: #FFF6E0;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+        }
+        .wizard-form .idol-option.selected {
+            border: 2px solid #FFD700;
+            background: #FFF6E0;
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.25);
         }
         .wizard-form .idol-option.selected::after {
-            content: none;
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 12px;
+            height: 12px;
+            background: #28a745;
+            border-radius: 50%;
+            border: 2px solid #FFD700;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
         }
         @media (max-width: 900px) {
             .wizard-container {
@@ -347,7 +415,7 @@
                     <div class="wizard-step-line"></div>
                     <div class="wizard-step-dot" id="step-dot-2"></div>
                                 </div>
-                <div id="wizard-step-1">
+                <div id="wizard-step-1" class="wizard-step">
                     <div class="wizard-title">Prebooking</div>
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Your full name" required />
@@ -359,7 +427,7 @@
                     <input type="text" id="city" name="city" placeholder="Your city" required />
                     <button type="button" class="wizard-btn" id="to-step-2">Next</button>
                 </div>
-                <div id="wizard-step-2" style="display:none;">
+                <div id="wizard-step-2" class="wizard-step hidden">
                     <div class="wizard-title">Select Idol Type & Size</div>
                     <div class="idols-list">
                         <div class="idol-option selected" data-value="Normal">Normal</div>
@@ -368,7 +436,7 @@
                     </div>
                     <input type="hidden" name="idol_type" id="idol_type" value="Normal" required />
                     <!-- Size selection for Normal -->
-                    <div id="size-options-normal" class="sizes-row" style="display:block; margin-bottom:18px;">
+                    <div id="size-options-normal" class="sizes-row" style="margin-bottom:18px;">
                         <div style="display: flex; flex-wrap: wrap; gap: 16px 10px; justify-content: center; align-items: stretch;">
                             <div style="flex: 1 1 120px; max-width: 140px; min-width: 110px; text-align: center;">
                                 <label style="width:100%; cursor:pointer;">
@@ -376,7 +444,7 @@
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
                                         <img src="img/normal-small.jpg" alt="Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Small 8'</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>86</span></div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>86</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Small 8\'','£18','Available','86')">Details</button>
                                     </div>
                                 </label>
@@ -385,9 +453,9 @@
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="normal-large" style="display:none;">
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/normal-large.png" alt="Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <img src="img/normal_large.jpeg" alt="Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Large (18' - 24')</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>23</span></div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>23</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Large (18\' - 24\')','£210 - £350','Available','23')">Details</button>
                                     </div>
                                 </label>
@@ -396,9 +464,9 @@
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="normal-customized" style="display:none;">
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/normal-premium.jpg" alt="Customized" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <img src="img/customized.png" alt="Customized" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Customized</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>On request</span></div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>On request</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Customized','To be defined','Available','On request')">Details</button>
                                     </div>
                                 </label>
@@ -406,15 +474,15 @@
                         </div>
                     </div>
                     <!-- Size selection for Premium -->
-                    <div id="size-options-premium" class="sizes-row" style="display:none; margin-bottom:18px;">
+                    <div id="size-options-premium" class="sizes-row hidden" style="margin-bottom:18px;">
                         <div class="row">
                             <div class="col-xs-6 text-center">
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="premium-small" style="display:none;">
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/normal-small.jpg" alt="Premium Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <img src="img/premium_small.png" alt="Premium Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Small 8'</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>36</span></div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>36</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Small 8\'','£30','Available','36')">Details</button>
                                             </div>
                                         </label>
@@ -423,9 +491,9 @@
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="premium-large" style="display:none;">
                                     <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/normal-premium.jpg" alt="Premium Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                        <img src="img/premium_large.png" alt="Premium Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                         <div>Large (18' - 24')</div>
-                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:#1d6167;'>11</span></div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>11</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Large (18\' - 24\')','£275 - £550','Available','11')">Details</button>
                                             </div>
                                         </label>
@@ -433,7 +501,7 @@
                                             </div>
                                     </div>
                     <!-- Size selection for Eco-Friendly -->
-                    <div id="size-options-eco" class="sizes-row" style="display:none; margin-bottom:18px;">
+                    <div id="size-options-eco" class="sizes-row hidden" style="margin-bottom:18px;">
                         <div class="row">
                             <div class="col-xs-6 text-center">
                                 <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
@@ -445,9 +513,9 @@
                             </div>
                             <div class="col-xs-6 text-center">
                                 <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
-                                    <img src="img/eco-large.png" alt="Eco Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <img src="img/eco_friendly_large.jpeg" alt="Eco Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
                                     <div>Large (18' - 24')</div>
-                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:#1d6167;">34</span></div>
+                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:green;">34</span></div>
                                     <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Available','34')">Details</button>
                                 </div>
                             </div>
@@ -490,14 +558,38 @@
                 }
             });
             if(!valid) return;
-            document.getElementById('wizard-step-1').style.display = 'none';
-            document.getElementById('wizard-step-2').style.display = 'block';
+            
+            // Smooth transition to step 2
+            var step1 = document.getElementById('wizard-step-1');
+            var step2 = document.getElementById('wizard-step-2');
+            
+            step1.classList.add('hidden');
+            setTimeout(function() {
+                step1.style.display = 'none';
+                step2.style.display = 'block';
+                setTimeout(function() {
+                    step2.classList.remove('hidden');
+                }, 100);
+            }, 600);
+            
             document.getElementById('step-dot-1').classList.remove('active');
             document.getElementById('step-dot-2').classList.add('active');
         };
+        
         document.getElementById('back-to-step-1').onclick = function() {
-            document.getElementById('wizard-step-2').style.display = 'none';
-            document.getElementById('wizard-step-1').style.display = 'block';
+            // Smooth transition back to step 1
+            var step1 = document.getElementById('wizard-step-1');
+            var step2 = document.getElementById('wizard-step-2');
+            
+            step2.classList.add('hidden');
+            setTimeout(function() {
+                step2.style.display = 'none';
+                step1.style.display = 'block';
+                setTimeout(function() {
+                    step1.classList.remove('hidden');
+                }, 100);
+            }, 600);
+            
             document.getElementById('step-dot-2').classList.remove('active');
             document.getElementById('step-dot-1').classList.add('active');
         };
@@ -507,11 +599,31 @@
                 document.querySelectorAll('.idol-option').forEach(function(opt) { opt.classList.remove('selected'); });
                 el.classList.add('selected');
                 document.getElementById('idol_type').value = el.getAttribute('data-value');
-                // Show/hide size options
+                
+                // Smooth transition for size options
                 var idolType = el.getAttribute('data-value');
-                document.getElementById('size-options-normal').style.display = (idolType === 'Normal') ? 'block' : 'none';
-                document.getElementById('size-options-eco').style.display = (idolType === 'Eco-Friendly') ? 'block' : 'none';
-                document.getElementById('size-options-premium').style.display = (idolType === 'Premium') ? 'block' : 'none';
+                var allSizeOptions = ['size-options-normal', 'size-options-eco', 'size-options-premium'];
+                
+                // Hide all size options first
+                allSizeOptions.forEach(function(id) {
+                    var element = document.getElementById(id);
+                    element.classList.add('hidden');
+                });
+                
+                // Show the selected size option after a brief delay
+                setTimeout(function() {
+                    allSizeOptions.forEach(function(id) {
+                        var element = document.getElementById(id);
+                        if (id === 'size-options-normal' && idolType === 'Normal') {
+                            element.classList.remove('hidden');
+                        } else if (id === 'size-options-eco' && idolType === 'Eco-Friendly') {
+                            element.classList.remove('hidden');
+                        } else if (id === 'size-options-premium' && idolType === 'Premium') {
+                            element.classList.remove('hidden');
+                        }
+                    });
+                }, 300);
+                
                 // Uncheck all size radios
                 document.querySelectorAll('input[name="size"]').forEach(function(radio) { radio.checked = false; });
             };
@@ -519,9 +631,9 @@
         // On page load, set Normal as default
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('idol_type').value = 'Normal';
-            document.getElementById('size-options-normal').style.display = 'block';
-            document.getElementById('size-options-eco').style.display = 'none';
-            document.getElementById('size-options-premium').style.display = 'none';
+            document.getElementById('size-options-normal').classList.remove('hidden');
+            document.getElementById('size-options-eco').classList.add('hidden');
+            document.getElementById('size-options-premium').classList.add('hidden');
             document.querySelectorAll('.idol-option').forEach(function(opt) {
                 if(opt.getAttribute('data-value') === 'Normal') opt.classList.add('selected');
                 else opt.classList.remove('selected');
@@ -576,7 +688,7 @@
                 normal: {
                     small: {img: 'img/normal-small.jpg', value: 'normal-small', label: 'Small<br><small>8-9 inches</small>'},
                     medium: {img: 'img/normal-medium.png', value: 'normal-medium', label: 'Medium<br><small>12-15 inches</small>'},
-                    large: {img: 'img/normal-large.png', value: 'normal-large', label: 'Large<br><small>20-24 inches</small>'},
+                    large: {img: 'img/normal_large.jpeg', value: 'normal-large', label: 'Large<br><small>20-24 inches</small>'},
                     premium: {img: 'img/normal-premium.jpg', value: 'normal-premium', label: 'Premium<br><small>15-60 inches</small>'}
                 },
                 eco: {
