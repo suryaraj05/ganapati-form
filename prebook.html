@@ -286,18 +286,7 @@
             transform: translateY(-2px) scale(1.01);
             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.25);
         }
-        .wizard-form .idol-option.selected::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            width: 12px;
-            height: 12px;
-            background: #28a745;
-            border-radius: 50%;
-            border: 2px solid #FFD700;
-            animation: pulse 2s infinite;
-        }
+
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.2); opacity: 0.7; }
@@ -337,12 +326,12 @@
 </head>
 <body>
     <!-- Fixed Navigation -->
-    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#F5E488;">
+    <header id="navigation" class="navbar-fixed-top navbar" style="background-color:#fff; border-bottom:none; box-shadow:none;">
         <div class="container">
             <div class="navbar-header">
                 <!-- Logo -->
                 <a class="navbar-brand" href="index.html#banner" style="padding:0;">
-                    <img src="img/logo-04-png.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px;">
+                    <img src="img/new-nav-logo.png" alt="Brandi Ganesh Logo" style="height:60px; margin-top:-10px; filter: drop-shadow(0 0 8px #fff);">
                 </a>
                 <!-- responsive nav button -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -353,19 +342,20 @@
             </div>
             <!-- main nav -->
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                <ul id="nav" class="nav navbar-nav">
-                    <li><a href="index.html#banner">Home</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li class="current"><a href="prebook.html" class="external">Pre-book</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
+                <ul id="nav" class="nav navbar-nav" style="text-align:center;">
+                    <li><a href="index.html#banner" style="color:#911F07; font-weight:600; background:none;">Home</a></li>
+                    <li><a href="index.html#about" style="color:#911F07; font-weight:600; background:none;">About Us</a></li>
+                    <li class="current"><a href="prebook.html" class="external" style="color:#911F07; font-weight:600; background:none;">Pre-book</a></li>
+                    <li><a href="index.html#contact" style="color:#911F07; font-weight:600; background:none;">Contact Us</a></li>
                 </ul>
             </nav>
             <!-- /main nav -->
         </div>
     </header>
     <style>
+        /* Navbar text color static */
         #navigation {
-            background-color: #F5E488 !important;
+            background-color: #ffdbdb !important;
         }
         #navigation .navbar-nav > li > a {
             color: #911F07 !important;
@@ -373,6 +363,67 @@
         }
         #navigation.navbar-colored .navbar-nav > li > a {
             color: #911F07 !important;
+        }
+        /* Force navbar background and link color for all screen sizes */
+        #navigation, #navigation.navbar, #navigation .navbar-collapse, #navigation .navbar-header, #navigation .navbar-nav, #navigation .navbar-default, #navigation .navbar-toggle, #navigation .navbar-collapse.collapse {
+            background-color: #ffffff !important;
+            border: none !important;
+        }
+        #navigation .navbar-nav > li > a,
+        #navigation .navbar-nav > li > a:visited,
+        #navigation .navbar-nav > li > a:focus,
+        #navigation .navbar-nav > li > a:hover {
+            color: #911F07 !important;
+            background: none !important;
+        }
+        #navigation .navbar-toggle {
+            border-color: #911F07 !important;
+            background: none !important;
+        }
+        #navigation .navbar-toggle .icon-bar,
+        #navigation .navbar-toggle i {
+            background: #911F07 !important;
+            color: #911F07 !important;
+        }
+        @media (max-width: 767px) {
+            #navigation, #navigation.navbar, #navigation .navbar-collapse, #navigation .navbar-header, #navigation .navbar-nav, #navigation .navbar-default, #navigation .navbar-toggle, #navigation .navbar-collapse.collapse {
+                background-color: #ffffff !important;
+                border: none !important;
+            }
+            #navigation .navbar-nav > li > a {
+                color: #FFD700 !important;
+                background: none !important;
+                font-size: 1.1em;
+                padding: 12px 0;
+                text-align: center;
+            }
+            #navigation .navbar-toggle {
+                border-color: #FFD700 !important;
+                background: none !important;
+            }
+            #navigation .navbar-toggle .icon-bar,
+            #navigation .navbar-toggle i {
+                background: #FFD700 !important;
+                color: #FFD700 !important;
+            }
+            /* Hamburger menu: only three gold lines, no solid block */
+            #navigation .navbar-toggle {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            #navigation .navbar-toggle .icon-bar {
+                background: #FFD700 !important;
+                height: 3px;
+                margin: 5px 0;
+                border-radius: 2px;
+                width: 28px;
+                display: block;
+            }
+            #navigation .navbar-toggle i {
+                color: #FFD700 !important;
+                background: transparent !important;
+            }
         }
         .btn-toggle.active {
             background-color: #911F07 !important;
@@ -416,18 +467,6 @@
                     <div class="wizard-step-dot" id="step-dot-2"></div>
                                 </div>
                 <div id="wizard-step-1" class="wizard-step">
-                    <div class="wizard-title">Prebooking</div>
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your full name" required />
-                                        <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="email@example.com" required />
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Phone number" required />
-                    <label for="city">City/Place</label>
-                    <input type="text" id="city" name="city" placeholder="Your city" required />
-                    <button type="button" class="wizard-btn" id="to-step-2">Next</button>
-                </div>
-                <div id="wizard-step-2" class="wizard-step hidden">
                     <div class="wizard-title">Select Idol Type & Size</div>
                     <div class="idols-list">
                         <div class="idol-option selected" data-value="Normal">Normal</div>
@@ -441,8 +480,8 @@
                             <div style="flex: 1 1 120px; max-width: 140px; min-width: 110px; text-align: center;">
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="normal-small" style="display:none;">
-                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/normal-small.jpg" alt="Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <div class="package-card" onclick="selectSize(this);">
+                                        <img src="img/normal-small.jpg" alt="Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px; cursor:pointer;" onclick="event.stopPropagation(); showImageModal('img/normal-small.jpg', 'Normal Small 8\'');">
                                         <div>Small 8'</div>
                                         <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>86</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Small 8\'','£18','Available','86')">Details</button>
@@ -452,8 +491,8 @@
                             <div style="flex: 1 1 120px; max-width: 140px; min-width: 110px; text-align: center;">
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="normal-large" style="display:none;">
-                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/normal_large.jpeg" alt="Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <div class="package-card" onclick="selectSize(this);">
+                                        <img src="img/normal_large.jpeg" alt="Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px; cursor:pointer;" onclick="event.stopPropagation(); showImageModal('img/normal_large.jpeg', 'Normal Large (18\' - 24\')');">
                                         <div>Large (18' - 24')</div>
                                         <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>23</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Large (18\' - 24\')','£210 - £350','Available','23')">Details</button>
@@ -463,8 +502,8 @@
                             <div style="flex: 1 1 120px; max-width: 140px; min-width: 110px; text-align: center;">
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="normal-customized" style="display:none;">
-                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/customized.png" alt="Customized" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <div class="package-card" onclick="selectSize(this);">
+                                        <img src="img/customized.png" alt="Customized" style="width:100%; max-width:65px; height:auto; margin-bottom:4px; cursor:pointer;" onclick="event.stopPropagation(); showImageModal('img/customized.png', 'Normal Customized');">
                                         <div>Customized</div>
                                         <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>On request</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Normal','Customized','To be defined','Available','On request')">Details</button>
@@ -479,8 +518,8 @@
                             <div class="col-xs-6 text-center">
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="premium-small" style="display:none;">
-                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/premium_small.png" alt="Premium Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <div class="package-card" onclick="selectSize(this);">
+                                        <img src="img/premium_small.png" alt="Premium Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px; cursor:pointer;" onclick="event.stopPropagation(); showImageModal('img/premium_small.png', 'Premium Small 8\'');">
                                         <div>Small 8'</div>
                                         <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>36</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Small 8\'','£30','Available','36')">Details</button>
@@ -490,8 +529,8 @@
                             <div class="col-xs-6 text-center">
                                 <label style="width:100%; cursor:pointer;">
                                     <input type="radio" name="size" value="premium-large" style="display:none;">
-                                    <div class="package-card" onclick="this.previousElementSibling.checked=true; this.classList.add('selected'); Array.from(document.getElementsByName('size')).forEach(r=>{if(r!==this.previousElementSibling) r.parentElement.querySelector('.package-card').classList.remove('selected');});">
-                                        <img src="img/premium_large.png" alt="Premium Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
+                                    <div class="package-card" onclick="selectSize(this);">
+                                        <img src="img/premium_large.png" alt="Premium Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px; cursor:pointer;" onclick="event.stopPropagation(); showImageModal('img/premium_large.png', 'Premium Large (18\' - 24\')');">
                                         <div>Large (18' - 24')</div>
                                         <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style='color:green;'>11</span></div>
                                         <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Premium','Large (18\' - 24\')','£275 - £550','Available','11')">Details</button>
@@ -504,23 +543,45 @@
                     <div id="size-options-eco" class="sizes-row hidden" style="margin-bottom:18px;">
                         <div class="row">
                             <div class="col-xs-6 text-center">
-                                <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
-                                    <img src="img/eco-small.jpg" alt="Eco Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
-                                    <div>Small 8'</div>
-                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:red;">Sold Out</span></div>
-                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Small 8\'','£22','Sold Out','0')">Details</button>
-                                </div>
+                                <label style="width:100%; cursor:pointer;">
+                                    <input type="radio" name="size" value="eco-small" style="display:none;">
+                                    <div class="package-card" onclick="selectSize(this);">
+                                        <img src="img/eco-small.jpg" alt="Eco Small" style="width:100%; max-width:65px; height:auto; margin-bottom:4px; cursor:pointer;" onclick="event.stopPropagation(); showImageModal('img/eco-small.jpg', 'Eco-Friendly Small 8\'');">
+                                        <div>Small 8'</div>
+                                        <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:red;">Sold Out</span></div>
+                                        <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Eco-Friendly','Small 8\'','£22','Sold Out','0')">Details</button>
+                                    </div>
+                                </label>
                             </div>
                             <div class="col-xs-6 text-center">
-                                <div class="package-card" style="opacity:0.7; cursor:not-allowed;">
-                                    <img src="img/eco_friendly_large.jpeg" alt="Eco Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px;">
-                                    <div>Large (18' - 24')</div>
-                                    <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:green;">34</span></div>
-                                    <button type="button" class="full-info-btn" onclick="showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Available','34')">Details</button>
-                                </div>
+                                <label style="width:100%; cursor:pointer;">
+                                    <label style="width:100%; cursor:pointer;">
+                                        <input type="radio" name="size" value="eco-large" style="display:none;">
+                                        <div class="package-card" onclick="selectSize(this);">
+                                            <img src="img/eco_friendly_large.jpeg" alt="Eco Large" style="width:100%; max-width:65px; height:auto; margin-bottom:4px; cursor:pointer;" onclick="event.stopPropagation(); showImageModal('img/eco_friendly_large.jpeg', 'Eco-Friendly Large (18\' - 24\')');">
+                                            <div>Large (18' - 24')</div>
+                                            <div style="font-size:0.92em; color:#444; margin-bottom:2px;">Available: <span style="color:green;">34</span></div>
+                                            <button type="button" class="full-info-btn" onclick="event.stopPropagation(); showInfoModal('Eco-Friendly','Large (18\' - 24\')','£240 - £400','Available','34')">Details</button>
+                                        </div>
+                                    </label>
+                                </label>
                             </div>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="button" class="wizard-btn" id="to-step-2">Next</button>
+                    </div>
+                </div>
+                <div id="wizard-step-2" class="wizard-step hidden">
+                    <div class="wizard-title">Prebooking</div>
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required />
+                                        <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="email@example.com" required />
+                    <label for="phone">Phone *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone number" required />
+                    <label for="city">City/Place *</label>
+                    <input type="text" id="city" name="city" placeholder="Your city" required />
                     <button type="button" class="wizard-btn" id="back-to-step-1" style="background:#fff; color:#911F07; border:1.5px solid #FFD700; margin-right:12px;">Back</button>
                     <button type="submit" class="wizard-btn">Submit</button>
                 </div>
@@ -543,23 +604,42 @@
             </div>
         </div>
     </div>
+    
+    <!-- Image Modal -->
+    <div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); z-index:10000; align-items:center; justify-content:center;">
+        <div style="background:#fff; border-radius:12px; padding:20px; max-width:90vw; max-height:90vh; text-align:center; position:relative;">
+            <button onclick="document.getElementById('image-modal').style.display='none'" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:24px; color:#911F07; cursor:pointer; font-weight:bold;">×</button>
+            <h3 id="image-modal-title" style="color:#911F07; margin-bottom:15px; font-size:1.2em;"></h3>
+            <img id="image-modal-img" src="" alt="" style="max-width:100%; max-height:70vh; object-fit:contain; border-radius:8px;">
+        </div>
+    </div>
     <script>
         // Wizard step logic
         document.getElementById('to-step-2').onclick = function() {
-            // Validate all fields in step 1
-            var valid = true;
-            ['name','email','phone','city'].forEach(function(id) {
-                var el = document.getElementById(id);
-                if(!el.value) {
-                    el.style.borderBottom = '2px solid #c0392b';
-                    valid = false;
-                } else {
-                    el.style.borderBottom = '2px solid #FFD700';
-                }
-            });
-            if(!valid) return;
+            // Validate size selection in step 1
+            var sizeSelected = false;
+            var idolType = document.getElementById('idol_type').value;
             
-            // Smooth transition to step 2
+            if (idolType === 'Normal') {
+                document.querySelectorAll('#size-options-normal input[name="size"]').forEach(function(radio) { 
+                    if (radio.checked) sizeSelected = true; 
+                });
+            } else if (idolType === 'Premium') {
+                document.querySelectorAll('#size-options-premium input[name="size"]').forEach(function(radio) { 
+                    if (radio.checked) sizeSelected = true; 
+                });
+            } else if (idolType === 'Eco-Friendly') {
+                document.querySelectorAll('#size-options-eco input[name="size"]').forEach(function(radio) { 
+                    if (radio.checked) sizeSelected = true; 
+                });
+            }
+            
+            if (!sizeSelected) {
+                alert('Please select a size.');
+                return;
+            }
+            
+            // Smooth transition to step 2 (form step)
             var step1 = document.getElementById('wizard-step-1');
             var step2 = document.getElementById('wizard-step-2');
             
@@ -577,7 +657,7 @@
         };
         
         document.getElementById('back-to-step-1').onclick = function() {
-            // Smooth transition back to step 1
+            // Smooth transition back to step 1 (selection step)
             var step1 = document.getElementById('wizard-step-1');
             var step2 = document.getElementById('wizard-step-2');
             
@@ -628,8 +708,13 @@
                 document.querySelectorAll('input[name="size"]').forEach(function(radio) { radio.checked = false; });
             };
         });
-        // On page load, set Normal as default
+        // On page load, set Normal as default and show step 1 first
         document.addEventListener('DOMContentLoaded', function() {
+            // Show step 1 (selection step) by default
+            document.getElementById('wizard-step-1').style.display = 'block';
+            document.getElementById('wizard-step-1').classList.remove('hidden');
+            document.getElementById('wizard-step-2').style.display = 'none';
+            
             document.getElementById('idol_type').value = 'Normal';
             document.getElementById('size-options-normal').classList.remove('hidden');
             document.getElementById('size-options-eco').classList.add('hidden');
@@ -638,11 +723,11 @@
                 if(opt.getAttribute('data-value') === 'Normal') opt.classList.add('selected');
                 else opt.classList.remove('selected');
             });
-            // Select the first size option by default
-            var firstNormal = document.querySelector('#size-options-normal input[type="radio"]');
-            if(firstNormal) {
-                firstNormal.checked = true;
-                firstNormal.parentElement.querySelector('.package-card').classList.add('selected');
+            // Select Normal Small size by default
+            var normalSmall = document.querySelector('#size-options-normal input[value="normal-small"]');
+            if(normalSmall) {
+                normalSmall.checked = true;
+                normalSmall.parentElement.querySelector('.package-card').classList.add('selected');
             }
         });
         // Prevent submit if idol_type or size not selected
@@ -765,6 +850,22 @@
         });
     </script>
     <script>
+        function selectSize(element) {
+            element.previousElementSibling.checked = true;
+            element.classList.add('selected');
+            Array.from(document.getElementsByName('size')).forEach(r => {
+                if (r !== element.previousElementSibling) {
+                    r.parentElement.querySelector('.package-card').classList.remove('selected');
+                }
+            });
+        }
+        
+        function showImageModal(imageSrc, title) {
+            document.getElementById('image-modal-img').src = imageSrc;
+            document.getElementById('image-modal-title').textContent = title;
+            document.getElementById('image-modal').style.display = 'flex';
+        }
+        
         function showInfoModal(type, size, cost, available, number) {
             var html = '<div style="font-size:1.2em; font-weight:700; margin-bottom:10px;">' + type + ' - ' + size + '</div>';
             // Add new concise, attractive description and shipping note
@@ -784,7 +885,6 @@
                 html += '<div style="font-size:0.97em; color:#444; margin-bottom:6px;">🌿 Eco-friendly idol, great for families or eco conscious group celebrations.</div>';
             }
             html += '<div><strong>Cost:</strong> <span style="color:green; font-weight:600;">' + cost + '</span> <span style="color:#911F07; font-size:0.97em;">(shipping included)</span></div>';
-            html += '<div><strong>Available:</strong> <span style="color:' + (available === 'Sold Out' ? 'red' : 'green') + '; font-weight:400;">' + available + '</span></div>';
             if(number && number !== 'On request') html += '<div><strong>No. Available:</strong> <span style="color:green; font-weight:400;">' + (available === 'Sold Out' ? '0' : number) + '</span></div>';
             document.getElementById('info-modal-body').innerHTML = html;
             document.getElementById('info-modal').style.display = 'flex';

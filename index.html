@@ -24,7 +24,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Google Font -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Montserrat:700,900|Poppins:400,600|Playfair+Display:700,900' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Poppins:400,600' rel='stylesheet' type='text/css'>
 
     <!-- CSS
 		================================================== -->
@@ -84,48 +88,41 @@
         /* Banner carousel styles */
         #bannerCarousel {
             position: relative;
+            overflow: hidden;
+            height: 650px;
         }
         #bannerCarousel .carousel-inner {
-            height: auto;
+            height: 650px;
         }
         #bannerCarousel .item {
             position: relative;
+            overflow: hidden;
+            height: 650px;
         }
         #bannerCarousel .item img {
             width: 100%;
-            height: auto;
+            height: 650px;
+            object-fit: cover;
             display: block;
         }
+
         #bannerCarousel .carousel-indicators {
             bottom: 20px;
-            left: auto;
-            right: 30px;
-            width: auto;
         }
         #bannerCarousel .carousel-indicators li {
-            border: 2px solid rgba(255,255,255,0.5);
+            border: 2px solid #fff;
             background: transparent;
             width: 12px;
             height: 12px;
             margin: 0 5px;
+            border-radius: 50%;
         }
         #bannerCarousel .carousel-indicators .active {
-            background: #FFD700;
-            border-color: #FFD700;
+            background: #fff;
+            border-color: #fff;
         }
         #bannerCarousel .carousel-control {
-            background: none;
-            border: none;
-            opacity: 0.8;
-            width: 50px;
-        }
-        #bannerCarousel .carousel-control:hover {
-            opacity: 1;
-        }
-        #bannerCarousel .carousel-control .glyphicon {
-            color: #FFD700;
-            font-size: 24px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            display: none;
         }
         
         /* Banner text align right and vertically center */
@@ -135,7 +132,7 @@
             align-items: flex-end;
             text-align: right;
             width: 100%;
-            height: 100%;
+            height: 650px;
             justify-content: center;
             padding-right: 60px;
             padding-top: 0;
@@ -143,17 +140,21 @@
         /* Homepage heading and subheading font styles */
         #banner .banner-text-right h1 {
             font-size: 3.2em !important;
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
             letter-spacing: 0.5px;
             line-height: 1.12;
+            margin-bottom: 24px !important;
+            margin-top: 0 !important;
         }
         #banner .banner-text-right h3 {
             font-size: 1.7em !important;
-            font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
-            font-weight: 400;
+            font-family: 'Ancizar Sans', sans-serif;
+            font-weight: 200;
             letter-spacing: 0.5px;
             line-height: 1.3;
+            margin-bottom: 32px !important;
+            margin-top: 0 !important;
         }
         /* Golden CTA button */
         .btn-gold {
@@ -204,7 +205,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 650px;
             background: rgba(0,0,0,0.35);
             z-index: 1;
         }
@@ -229,15 +230,16 @@
         }
         #about h2, #contact h2 {
             color: #B3472C;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 800;
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
             font-size: 2.2em;
-            margin-bottom: 18px;
+            margin-bottom: 24px;
+            margin-top: 0;
         }
         #about .about-content, #contact .contact-content {
             font-size: 1.18em;
             color: #444;
-            margin-top: 10px;
+            margin-top: 0;
             font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
         }
         #about .about-icon, #contact .contact-icon {
@@ -250,6 +252,12 @@
             justify-content: center;
             margin: 0 auto 18px auto;
             box-shadow: 0 2px 8px rgba(179,71,44,0.08);
+        }
+        #about .about-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 8px;
         }
         #about .about-icon i, #contact .contact-icon i {
             font-size: 2.8em;
@@ -329,33 +337,29 @@
             #banner .banner-text-right h1 {
                 font-size: 1.5em !important;
                 line-height: 1.2;
-                margin-bottom: 10px;
+                margin-bottom: 16px !important;
             }
             #banner .banner-text-right h3 {
                 font-size: 1em !important;
                 line-height: 1.3;
-                margin-bottom: 16px;
+                margin-bottom: 20px !important;
             }
             .btn-gold {
                 font-size: 1em !important;
                 padding: 10px 18px !important;
                 margin-bottom: 18px;
             }
-            /* Banner carousel mobile styles */
+
             #bannerCarousel .carousel-indicators {
-                bottom: 10px;
-                right: 15px;
+                bottom: 15px;
             }
             #bannerCarousel .carousel-indicators li {
                 width: 10px;
                 height: 10px;
-                margin: 0 3px;
+                margin: 0 4px;
             }
             #bannerCarousel .carousel-control {
-                width: 40px;
-            }
-            #bannerCarousel .carousel-control .glyphicon {
-                font-size: 18px;
+                display: none;
             }
             
             /* Banner section height and spacing */
@@ -368,9 +372,16 @@
                 position: relative;
                 padding-top: 60px;
             }
-            #banner img {
-                min-height: 340px;
-                max-height: 400px;
+            #bannerCarousel {
+                height: 340px;
+            }
+            #bannerCarousel .carousel-inner {
+                height: 340px;
+            }
+            #bannerCarousel .item {
+                height: 340px;
+            }
+            #bannerCarousel .item img {
                 height: 340px;
                 width: 100vw;
                 object-fit: cover;
@@ -378,10 +389,11 @@
                 display: block;
             }
             #banner .banner-overlay {
-                min-height: 340px;
-                max-height: 400px;
                 height: 340px;
                 width: 100vw;
+            }
+            #banner .banner-text-right {
+                height: 340px;
             }
             #banner .banner-text-right {
                 margin-top: 80px;
@@ -390,7 +402,7 @@
             }
             #banner .banner-text-right h1,
             #banner .banner-text-right h3 {
-                margin-bottom: 10px;
+                margin-bottom: 16px;
             }
             #banner .banner-text-right .btn-gold {
                 margin-top: 10px;
@@ -467,8 +479,8 @@
     </header>
 
     <!-- Banner Carousel Section -->
-    <section id="banner" style="padding:0; margin:0; position:relative;">
-        <div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+    <section id="banner" style="padding:0; margin:0; position:relative; overflow:hidden;">
+        <div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
@@ -478,23 +490,23 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <!-- Slide 1: Ganesh Chaturthi -->
-                <div class="item active">
+                <div class="item active" style="position:relative; overflow:hidden;">
                     <img src="img/banner_1.jpg" alt="Ganesh Chaturthi 2025" style="width:100%; height:auto; display:block;">
                     <div class="banner-overlay"></div>
                     <div class="banner-text-right" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:2; color:#fff;">
-                        <h1 style="font-size:2.2em; font-weight:800; margin-bottom:10px; margin-top:0; text-shadow:0 2px 8px rgba(0,0,0,0.25);">Ganesh Chaturthi 2025 Murthi <br> Pre-Booking Now Open Across the UK</h1>
-                        <h3 style="font-size:1.25em; font-weight:400; margin-bottom:10px; max-width:600px; text-shadow:0 2px 8px rgba(0,0,0,0.18);">Invite the blessings of Lord Ganesha into your home, pre-book your beautifully crafted Murthi now for smooth, timely delivery across the UK before Ganesh Chaturthi 2025.</h3>
+                        <h1 style="font-size:2.2em; font-weight:700; font-family:'Saira', sans-serif; margin-bottom:24px; margin-top:0; text-shadow:0 2px 8px rgba(0,0,0,0.25);">Ganesh Chaturthi 2025 Murthi <br> Pre-Booking Now Open Across the UK</h1>
+                        <h3 style="font-size:1.25em; font-weight:200; font-family:'Ancizar Sans', sans-serif; margin-bottom:32px; max-width:600px; text-shadow:0 2px 8px rgba(0,0,0,0.18);">Invite the blessings of Lord Ganesha into your home, pre-book your beautifully crafted Murthi now for smooth, timely delivery across the UK before Ganesh Chaturthi 2025.</h3>
                         <a href="prebook.html" class="btn btn-gold btn-lg" style="font-size:1.3em; padding:12px 38px; border-radius:32px;">Prebook Now</a>
                     </div>
                 </div>
                 
                 <!-- Slide 2: Bharat Mart -->
-                <div class="item">
+                <div class="item" style="position:relative; overflow:hidden;">
                     <img src="img/banner_2.png" alt="Bharat Mart" style="width:100%; height:auto; display:block;">
                     <div class="banner-overlay"></div>
                     <div class="banner-text-right" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:2; color:#fff;">
-                        <h1 style="font-size:2.2em; font-weight:800; margin-bottom:10px; margin-top:0; text-shadow:0 2px 8px rgba(0,0,0,0.25);">Bringing India Closer – Shop Authentic <br> Indian Essentials in the UK</h1>
-                        <h3 style="font-size:1.25em; font-weight:400; margin-bottom:10px; max-width:600px; text-shadow:0 2px 8px rgba(0,0,0,0.18);">Bharat Mart will bring you a curated range of Indian décor, pooja items, handmade gifts, wellness products, and more delivered to your doorstep across the UK.</h3>
+                        <h1 style="font-size:2.2em; font-weight:700; font-family:'Saira', sans-serif; margin-bottom:24px; margin-top:0; text-shadow:0 2px 8px rgba(0,0,0,0.25);">Bringing India Closer – Shop Authentic <br> Indian Essentials in the UK</h1>
+                        <h3 style="font-size:1.25em; font-weight:200; font-family:'Ancizar Sans', sans-serif; margin-bottom:32px; max-width:600px; text-shadow:0 2px 8px rgba(0,0,0,0.18);">Bharat Mart will bring you a curated range of Indian décor, pooja items, handmade gifts, wellness products, and more delivered to your doorstep across the UK.</h3>
                         <a href="#" class="btn btn-gold btn-lg" style="font-size:1.3em; padding:12px 38px; border-radius:32px;">Coming Soon</a>
                     </div>
                 </div>
@@ -525,12 +537,12 @@
     <section id="about" class="container" style="margin-top:40px; margin-bottom:40px;">
         <div class="row" style="align-items:center;">
             <div class="col-md-3 text-center" style="margin-bottom:20px;">
-                <div class="about-icon"><i class="fa fa-users"></i></div>
+                <div class="about-icon"><img src="img/logo-square.png" alt="Bharat Mart Logo" style="width:50px; height:50px; object-fit:contain;"></div>
                 <h3>Who We Are</h3>
             </div>
             <div class="col-md-9 about-content">
-                Who We Are
-                At Bharat Mart, we know how hard it is to find authentic, high-quality Indian pooja items, décor, wellness products, and everyday essentials in the UK. That’s why we’re working to bring all these products together online, so you can shop easily and get them delivered direct to your door.
+                
+                At <b>Bharat Mart UK</b>, we know how hard it is to find authentic, high-quality Indian pooja items, décor, wellness products, and everyday essentials in the UK. That’s why we’re working to bring all these products together online, so you can shop easily and get them delivered direct to your door.
                 <br><br>Our aim is to offer genuine Indian goods at prices lower than the market average, making it simple for you to enjoy the best of India. Whether you want to keep your traditions alive or add a touch of India to your home, Bharat Mart will be your trusted partner across the UK.
                 </div>
         </div>
@@ -543,7 +555,7 @@
                 <h3>Contact Us</h3>
             </div>
             <div class="col-md-9 contact-content">
-                <p>Have questions or want to know more? Reach out to us directly on <a href="https://wa.me/+447901241275" target="_blank" class="contact-highlight"><i class="fa fa-whatsapp"></i> WhatsApp</a> for a quick response, or email us at <a href="mailto:ssuryabackup@gmail.com">info@brandi-ganesh.co.uk</a>.</p>
+                <p>Have questions or want to know more? Reach out to us directly on <a href="https://wa.me/+447901241275" target="_blank" class="contact-highlight"><i class="fa fa-whatsapp"></i> WhatsApp</a> for a quick response, or email us at <a href="mailto:ssuryabackup@gmail.com">info@bharatmart.uk</a>.</p>
                 <p>We’re here to help you with your Ganesh Chaturthi pre-booking and any other queries!</p>
             </div>
         </div>
