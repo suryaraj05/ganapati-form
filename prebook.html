@@ -587,6 +587,8 @@
                     <button type="submit" class="wizard-btn">Submit</button>
                 </div>
             </form>
+            <!-- Form message container -->
+            <div id="form-message" style="display:none; margin-top:20px; padding:15px; border-radius:8px; text-align:center;"></div>
         </div>
     </div>
     <div id="thankyou-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
@@ -918,25 +920,36 @@
                     size: { required: "Please select a size" }
                 },
                 submitHandler: function(form) {
+                    // Show loading state
+                    $('#form-message').removeClass('alert-danger alert-success').addClass('alert alert-info').html('<div style="text-align:center;"><i class="fa fa-spinner fa-spin" style="margin-right:8px;"></i>Submitting your prebooking...</div>').show();
+                    
                     $.ajax({
                         type: "POST",
-                        url: "/api/process",
+                        url: "https://ganapati-form.vercel.app/api/process",
                         data: $(form).serialize(),
+                        dataType: 'json',
                         success: function(response) {
                             if(response.success) {
+                                // Hide form and show success message
                                 $('#prebooking-form').hide();
-                                $('#form-message').removeClass('alert-danger').addClass('alert alert-success').html('<h3 style="margin-top:10px;">Thank you!</h3><p>Your prebooking has been submitted successfully.<br>We will contact you soon with further details.</p>').show();
+                                $('#form-message').removeClass('alert-danger alert-info').addClass('alert alert-success').html('<div style="text-align:center; padding:20px;"><h3 style="color:#28a745; margin-bottom:15px;">✅ Thank You!</h3><p style="font-size:1.1em; margin-bottom:10px;">Your prebooking has been submitted successfully.</p><p style="color:#666;">We will contact you soon with further details.</p></div>').show();
+                                
+                                // Redirect to homepage after 3 seconds
                                 setTimeout(function() {
                                     window.location.href = 'index.html';
-                                }, 2000);
+                                }, 3000);
                             } else {
-                                $('#form-message').removeClass('alert-success').addClass('alert alert-danger').text('There was an error submitting your prebooking. Please try again.').show();
+                                $('#form-message').removeClass('alert-success alert-info').addClass('alert alert-danger').html('<div style="text-align:center; padding:15px;"><h4 style="color:#dc3545; margin-bottom:10px;">❌ Submission Error</h4><p>There was an error submitting your prebooking. Please try again.</p></div>').show();
                             }
                         },
-                        error: function() {
-                            $('#form-message').removeClass('alert-success').addClass('alert alert-danger').text('There was an error submitting your prebooking. Please try again.').show();
+                        error: function(xhr, status, error) {
+                            console.log('Error:', xhr.responseText);
+                            $('#form-message').removeClass('alert-success alert-info').addClass('alert alert-danger').html('<div style="text-align:center; padding:15px;"><h4 style="color:#dc3545; margin-bottom:10px;">❌ Connection Error</h4><p>Unable to connect to the server. Please check your internet connection and try again.</p></div>').show();
                         }
                     });
+                    
+                    // Prevent default form submission
+                    return false;
                 }
             });
         });
