@@ -165,8 +165,10 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
         .btn-gold:hover {
-            background: linear-gradient(90deg, #FFC300 0%, #FFD700 100%);
+            background: #911F07 !important;
             color: #fff !important;
+            transform: none !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
         }
         /* Glare effect for golden CTA button */
         .btn-gold {
@@ -192,8 +194,8 @@
             pointer-events: none;
         }
         .btn-gold:hover::before {
-            opacity: 1;
-            animation: glare-move 1s linear;
+            opacity: 0;
+            animation: none;
         }
         @keyframes glare-move {
             0% { left: -60%; top: -60%; }
@@ -220,7 +222,7 @@
         #about, #contact {
             background: #fff;
             border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
             padding: 48px 32px 40px 32px;
             margin-bottom: 48px;
         }
@@ -251,7 +253,7 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 18px auto;
-            box-shadow: 0 2px 8px rgba(179,71,44,0.08);
+            box-shadow: 0 2px 8px rgba(46, 19, 12, 0.08);
         }
         #about .about-icon img {
             width: 50px;
@@ -491,7 +493,7 @@
 
     <!-- Banner Carousel Section -->
     <section id="banner" style="padding:0; margin:0; position:relative; overflow:hidden;">
-        <div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="5500">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
@@ -557,7 +559,7 @@
                 <h3>Contact Us</h3>
             </div>
             <div class="col-md-9 contact-content">
-                <p>Have questions or want to know more? Reach out to us directly on <a href="https://wa.me/+447901241275" target="_blank" class="contact-highlight"><i class="fa fa-whatsapp"></i> WhatsApp</a> for a quick response, or email us at <a href="mailto:ssuryabackup@gmail.com">info@bharatmart.uk</a>.</p>
+                <p>Have questions or want to know more? Reach out to us directly on <a href="https://wa.me/+447901241275" target="_blank" class="contact-highlight"><i class="fa fa-whatsapp"></i> WhatsApp</a> for a quick response, or email us at <a href="mailto:ssuryabackup@gmail.com">info@bharatmart.uk</a></p>
                 <p>We’re here to help you with your Ganesh Chaturthi pre-booking and any other queries!</p>
             </div>
         </div>
@@ -670,9 +672,14 @@
                 <div class="col-md-6" style="font-size:1.1em;">
                     <strong>Bharat Mart Limited</strong>, Company number: 16582568
                 </div>
-                <div class="col-md-6 text-md-right text-center" style="margin-top:0;">
+                <div class="col-md-6 text-right" style="margin-top:0;">
                     <a href="prebook.html" style="color:#FFD700; margin:0 16px; font-weight:600; text-decoration:none;">Form</a>
                     <a href="gallery.html" style="color:#FFD700; margin:0 16px; font-weight:600; text-decoration:none;">Gallery</a>
+                </div>
+            </div>
+            <div class="row" style="margin-top:20px;">
+                <div class="col-md-12 text-center">
+                    <p style="color:#999; font-size:0.9em; margin:0;">© 2025 Bharat Mart. All rights reserved</p>
                 </div>
             </div>
         </div>

@@ -619,24 +619,40 @@
         document.getElementById('to-step-2').onclick = function() {
             // Validate size selection in step 1
             var sizeSelected = false;
+            var selectedSize = '';
             var idolType = document.getElementById('idol_type').value;
             
             if (idolType === 'Normal') {
                 document.querySelectorAll('#size-options-normal input[name="size"]').forEach(function(radio) { 
-                    if (radio.checked) sizeSelected = true; 
+                    if (radio.checked) {
+                        sizeSelected = true;
+                        selectedSize = radio.value;
+                    }
                 });
             } else if (idolType === 'Premium') {
                 document.querySelectorAll('#size-options-premium input[name="size"]').forEach(function(radio) { 
-                    if (radio.checked) sizeSelected = true; 
+                    if (radio.checked) {
+                        sizeSelected = true;
+                        selectedSize = radio.value;
+                    }
                 });
             } else if (idolType === 'Eco-Friendly') {
                 document.querySelectorAll('#size-options-eco input[name="size"]').forEach(function(radio) { 
-                    if (radio.checked) sizeSelected = true; 
+                    if (radio.checked) {
+                        sizeSelected = true;
+                        selectedSize = radio.value;
+                    }
                 });
             }
             
             if (!sizeSelected) {
                 alert('Please select a size.');
+                return;
+            }
+            
+            // Check if Eco-Friendly Small is selected (completely sold out)
+            if (idolType === 'Eco-Friendly' && selectedSize === 'eco-small') {
+                alert('Sorry, Eco-Friendly Small size is completely sold out. Please select a different size or idol type.');
                 return;
             }
             
@@ -716,40 +732,100 @@
             document.getElementById('wizard-step-1').classList.remove('hidden');
             document.getElementById('wizard-step-2').style.display = 'none';
             
+            // Set Normal as default idol type (use capitalized to match HTML)
             document.getElementById('idol_type').value = 'Normal';
+            
+            // Show Normal size options and hide others
             document.getElementById('size-options-normal').classList.remove('hidden');
             document.getElementById('size-options-eco').classList.add('hidden');
             document.getElementById('size-options-premium').classList.add('hidden');
+            
+            // Select Normal option visually
             document.querySelectorAll('.idol-option').forEach(function(opt) {
                 if(opt.getAttribute('data-value') === 'Normal') opt.classList.add('selected');
                 else opt.classList.remove('selected');
             });
-            // Select Normal Small size by default
+            
+            // Select Normal Small size by default and ensure it's checked
             var normalSmall = document.querySelector('#size-options-normal input[value="normal-small"]');
             if(normalSmall) {
                 normalSmall.checked = true;
                 normalSmall.parentElement.querySelector('.package-card').classList.add('selected');
+                // Ensure the value is properly set for form submission
+                normalSmall.setAttribute('checked', 'checked');
             }
+            
+            // Also set the default values in the jQuery section with longer delay
+            setTimeout(function() {
+                if(typeof $ !== 'undefined') {
+                    $('#idol_type').val('Normal');
+                    if(typeof updateSizes === 'function') {
+                        updateSizes('normal');
+                    }
+                    $('input[name="size"][value="normal-small"]').prop('checked', true);
+                    $('input[name="size"][value="normal-small"]').parent().find('.package-card').addClass('selected');
+                }
+            }, 200);
+            
+            // Double-check after a longer delay to ensure everything is set
+            setTimeout(function() {
+                var idolType = document.getElementById('idol_type').value;
+                var sizeSelected = document.querySelector('#size-options-normal input[value="normal-small"]:checked');
+                
+                if(!idolType || !sizeSelected) {
+                    // Force set the defaults again
+                    document.getElementById('idol_type').value = 'Normal';
+                    var normalSmall = document.querySelector('#size-options-normal input[value="normal-small"]');
+                    if(normalSmall) {
+                        normalSmall.checked = true;
+                        normalSmall.parentElement.querySelector('.package-card').classList.add('selected');
+                    }
+                }
+            }, 500);
         });
         // Prevent submit if idol_type or size not selected
         document.getElementById('prebooking-form').onsubmit = function(e) {
-            if (!document.getElementById('idol_type').value) {
-                alert('Please select an idol type.');
-                e.preventDefault();
-            }
             var idolType = document.getElementById('idol_type').value;
-            var sizeSelected = false;
-            if (idolType === 'Normal') {
-                document.querySelectorAll('#size-options-normal input[name="size"]').forEach(function(radio) { if (radio.checked) sizeSelected = true; });
-            } else if (idolType === 'Premium') {
-                document.querySelectorAll('#size-options-premium input[name="size"]').forEach(function(radio) { if (radio.checked) sizeSelected = true; });
-            } else if (idolType === 'Eco-Friendly') {
-                document.querySelectorAll('#size-options-eco input[name="size"]').forEach(function(radio) { if (radio.checked) sizeSelected = true; });
+            
+            // If no idol type is set, set it to Normal (default)
+            if (!idolType) {
+                document.getElementById('idol_type').value = 'Normal';
+                idolType = 'Normal';
             }
+            
+            var sizeSelected = false;
+            // Check for size selection based on idol type
+            if (idolType === 'normal' || idolType === 'Normal') {
+                document.querySelectorAll('#size-options-normal input[name="size"]').forEach(function(radio) { 
+                    if (radio.checked) sizeSelected = true; 
+                });
+                
+                // If no size is selected for Normal, default to normal-small
+                if (!sizeSelected) {
+                    var normalSmall = document.querySelector('#size-options-normal input[value="normal-small"]');
+                    if (normalSmall) {
+                        normalSmall.checked = true;
+                        normalSmall.parentElement.querySelector('.package-card').classList.add('selected');
+                        sizeSelected = true;
+                    }
+                }
+            } else if (idolType === 'premium' || idolType === 'Premium') {
+                document.querySelectorAll('#size-options-premium input[name="size"]').forEach(function(radio) { 
+                    if (radio.checked) sizeSelected = true; 
+                });
+            } else if (idolType === 'eco' || idolType === 'Eco-Friendly') {
+                document.querySelectorAll('#size-options-eco input[name="size"]').forEach(function(radio) { 
+                    if (radio.checked) sizeSelected = true; 
+                });
+            }
+            
             if (!sizeSelected) {
                 alert('Please select a size.');
                 e.preventDefault();
+                return false;
             }
+            
+            return true;
         };
         // Show thank you popup on submit
         document.getElementById('prebooking-form').addEventListener('submit', function(e) {
