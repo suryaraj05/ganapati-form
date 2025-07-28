@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Bharat Mart</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/jquery.fancybox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/media-queries.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Poppins:400,600' rel='stylesheet' type='text/css'>
+    
+    <style>
+        /* Gallery Page Specific Styles */
+        .gallery-header {
+            background: linear-gradient(135deg, #FFD700 0%, #FFC300 100%);
+            padding: 60px 0 40px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .gallery-header h1 {
+            color: #911F07;
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-header p {
+            color: #911F07;
+            font-family: 'Ancizar Sans', sans-serif;
+            font-weight: 200;
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .gallery-grid {
+            margin-bottom: 60px;
+        }
+        
+        .gallery-item {
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 300px;
+        }
+        
+        .gallery-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        /* Navbar Styles */
+        .navbar-custom {
+            background-color: #ffdbdb !important;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-custom .navbar-brand img {
+            filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+        }
+        
+        .navbar-custom .navbar-nav > li > a {
+            color: #911F07 !important;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 15px 20px !important;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-custom .navbar-nav > li > a:hover {
+            color: #FFD700 !important;
+            background-color: transparent !important;
+        }
+        
+        .navbar-custom .navbar-toggle {
+            border-color: #911F07;
+        }
+        
+        .navbar-custom .navbar-toggle .icon-bar {
+            background-color: #911F07;
+        }
+        
+        /* Footer Styles */
+        .footer-custom {
+            background: #222;
+            color: #fff;
+            padding: 32px 0 18px 0;
+            margin-top: 40px;
+        }
+        
+        .footer-custom a {
+            color: #FFD700;
+            margin: 0 16px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .footer-custom a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        /* Modal Styles */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 10001;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 90vw;
+            max-height: 90vh;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #911F07;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 767px) {
+            .gallery-header h1 {
+                font-size: 2.2em;
+            }
+            
+            .gallery-header p {
+                font-size: 1.1em;
+            }
+            
+            .gallery-card {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Gallery Header -->
+    <section class="gallery-header">
+        <div class="container">
+            <div style="text-align:center;">
+                <a href="index.html" class="btn btn-home" style="background:#911F07; color:#fff; padding:12px 30px; border-radius:25px; text-decoration:none; font-weight:600; font-size:16px; margin-bottom:20px; display:inline-block; transition:all 0.3s ease; box-shadow:0 2px 8px rgba(0,0,0,0.1);" onmouseover="this.style.background='#FFD700'; this.style.color='#911F07'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(145,31,7,0.3)'" onmouseout="this.style.background='#911F07'; this.style.color='#fff'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'">← Back to Home</a>
+            </div>
+            <h1>Our Ganesh Collection</h1>
+            <p>Explore our beautifully crafted Ganesh idols, from traditional designs to eco-friendly options</p>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="container">
+        <div class="row gallery-grid">
+            <!-- Gallery Images (01-19) -->
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/01.jpg')">
+                    <img src="img/gallery/01.jpg" alt="Ganesh 1" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/02.jpg')">
+                    <img src="img/gallery/02.jpg" alt="Ganesh 2" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/03.jpg')">
+                    <img src="img/gallery/03.jpg" alt="Ganesh 3" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/04.jpg')">
+                    <img src="img/gallery/04.jpg" alt="Ganesh 4" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/05.jpg')">
+                    <img src="img/gallery/05.jpg" alt="Ganesh 5" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/06.jpg')">
+                    <img src="img/gallery/06.jpg" alt="Ganesh 6" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/07.jpg')">
+                    <img src="img/gallery/07.jpg" alt="Ganesh 7" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/08.jpg')">
+                    <img src="img/gallery/08.jpg" alt="Ganesh 8" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/09.jpg')">
+                    <img src="img/gallery/09.jpg" alt="Ganesh 9" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/10.jpg')">
+                    <img src="img/gallery/10.jpg" alt="Ganesh 10" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/11.jpg')">
+                    <img src="img/gallery/11.jpg" alt="Ganesh 11" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/12.jpg')">
+                    <img src="img/gallery/12.jpg" alt="Ganesh 12" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/13.jpg')">
+                    <img src="img/gallery/13.jpg" alt="Ganesh 13" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/14.jpg')">
+                    <img src="img/gallery/14.jpg" alt="Ganesh 14" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/15.jpg')">
+                    <img src="img/gallery/15.jpg" alt="Ganesh 15" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/16.jpg')">
+                    <img src="img/gallery/16.jpg" alt="Ganesh 16" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/17.jpg')">
+                    <img src="img/gallery/17.jpg" alt="Ganesh 17" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/18.jpg')">
+                    <img src="img/gallery/18.jpg" alt="Ganesh 18" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/gallery/19.jpg')">
+                    <img src="img/gallery/19.jpg" alt="Ganesh 19" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <!-- Wizard Images -->
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/normal-small.jpg')">
+                    <img src="img/normal-small.jpg" alt="Normal Small" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/normal_large.jpeg')">
+                    <img src="img/normal_large.jpeg" alt="Normal Large" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/customized.png')">
+                    <img src="img/customized.png" alt="Customized" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/premium_small.png')">
+                    <img src="img/premium_small.png" alt="Premium Small" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/premium_large.png')">
+                    <img src="img/premium_large.png" alt="Premium Large" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/eco-small.jpg')">
+                    <img src="img/eco-small.jpg" alt="Eco Small" oncontextmenu="return false;">
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-4 col-md-3 gallery-item">
+                <div class="gallery-card" onclick="openGalleryModal('img/eco_friendly_large.jpeg')">
+                    <img src="img/eco_friendly_large.jpeg" alt="Eco Large" oncontextmenu="return false;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="gallery-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeGalleryModal()">×</button>
+            <img id="gallery-modal-img" class="modal-img" src="" alt="" oncontextmenu="return false;">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="row" style="align-items:center;">
+                <div class="col-md-6" style="font-size:1.1em;">
+                    <strong>Bharat Mart Limited</strong>, Company number: 16582568
+                </div>
+                <div class="col-md-6 text-md-right text-center" style="margin-top:0;">
+                    <a href="prebook.html">Form</a>
+                    <a href="index.html#gallery">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Action Button -->
+    <a href="https://wa.me/447901241275" target="_blank" id="whatsapp-fab" style="position:fixed; bottom:30px; right:30px; z-index:9999; background:linear-gradient(90deg, #FFD700 0%, #FFC300 100%); color:#911F07; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.18); font-size:2.2em; border:3px solid #fff;">
+        <img src="img/whatsapp-icon.png" alt="WhatsApp" style="width:36px; height:36px; display:block;">
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <script>
+        // Gallery Functions
+        function openGalleryModal(imageSrc) {
+            document.getElementById('gallery-modal-img').src = imageSrc;
+            document.getElementById('gallery-modal').style.display = 'flex';
+        }
+        
+        function closeGalleryModal() {
+            document.getElementById('gallery-modal').style.display = 'none';
+        }
+        
+        // Image Protection
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            // Prevent F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+            if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
+                (e.ctrlKey && e.keyCode === 85) || (e.ctrlKey && e.keyCode === 83)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Close modal on background click
+        document.getElementById('gallery-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGalleryModal();
+            }
+        });
+        
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 27) {
+                closeGalleryModal();
+            }
+        });
+    </script>
+</body>
+</html> 
