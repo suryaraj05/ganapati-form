@@ -930,14 +930,8 @@
                         dataType: 'json',
                         success: function(response) {
                             if(response.success) {
-                                // Hide form and show success message
-                                $('#prebooking-form').hide();
-                                $('#form-message').removeClass('alert-danger alert-info').addClass('alert alert-success').html('<div style="text-align:center; padding:20px;"><h3 style="color:#28a745; margin-bottom:15px;">✅ Thank You!</h3><p style="font-size:1.1em; margin-bottom:10px;">Your prebooking has been submitted successfully.</p><p style="color:#666;">We will contact you soon with further details.</p></div>').show();
-                                
-                                // Redirect to homepage after 3 seconds
-                                setTimeout(function() {
-                                    window.location.href = 'index.html';
-                                }, 3000);
+                                // Redirect to the custom success page
+                                window.location.href = 'success.html';
                             } else {
                                 $('#form-message').removeClass('alert-success alert-info').addClass('alert alert-danger').html('<div style="text-align:center; padding:15px;"><h4 style="color:#dc3545; margin-bottom:10px;">❌ Submission Error</h4><p>There was an error submitting your prebooking. Please try again.</p></div>').show();
                             }
