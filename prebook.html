@@ -786,49 +786,7 @@
             }, 500);
         });
         // Prevent submit if idol_type or size not selected
-        document.getElementById('prebooking-form').onsubmit = function(e) {
-            var idolType = document.getElementById('idol_type').value;
-            
-            // If no idol type is set, set it to Normal (default)
-            if (!idolType) {
-                document.getElementById('idol_type').value = 'Normal';
-                idolType = 'Normal';
-            }
-            
-            var sizeSelected = false;
-            // Check for size selection based on idol type
-            if (idolType === 'normal' || idolType === 'Normal') {
-                document.querySelectorAll('#size-options-normal input[name="size"]').forEach(function(radio) { 
-                    if (radio.checked) sizeSelected = true; 
-                });
-                
-                // If no size is selected for Normal, default to normal-small
-                if (!sizeSelected) {
-                    var normalSmall = document.querySelector('#size-options-normal input[value="normal-small"]');
-                    if (normalSmall) {
-                        normalSmall.checked = true;
-                        normalSmall.parentElement.querySelector('.package-card').classList.add('selected');
-                        sizeSelected = true;
-                    }
-                }
-            } else if (idolType === 'premium' || idolType === 'Premium') {
-                document.querySelectorAll('#size-options-premium input[name="size"]').forEach(function(radio) { 
-                    if (radio.checked) sizeSelected = true; 
-                });
-            } else if (idolType === 'eco' || idolType === 'Eco-Friendly') {
-                document.querySelectorAll('#size-options-eco input[name="size"]').forEach(function(radio) { 
-                    if (radio.checked) sizeSelected = true; 
-                });
-            }
-            
-            if (!sizeSelected) {
-                alert('Please select a size.');
-                e.preventDefault();
-                return false;
-            }
-            
-            return true;
-        };
+        // Removed native onsubmit handler for #prebooking-form (was lines 789-831)
         // Show thank you popup on submit
         document.getElementById('prebooking-form').addEventListener('submit', function(e) {
             if (!e.defaultPrevented) {
