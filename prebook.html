@@ -461,7 +461,7 @@
             <div class="wizard-image">
                 <img src="img/ganesh-banner.jpg" alt="Ganesh Reference" />
                                     </div>
-            <form class="wizard-form" id="prebooking-form" action="" method="post">
+            <form class="wizard-form" id="prebooking-form" action="process.php" method="post">
                 <div class="wizard-step-indicator">
                     <div class="wizard-step-dot active" id="step-dot-1"></div>
                     <div class="wizard-step-line"></div>
@@ -591,13 +591,6 @@
             <div id="form-message" style="display:none; margin-top:20px; padding:15px; border-radius:8px; text-align:center;"></div>
         </div>
     </div>
-    <div id="thankyou-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
-        <div style="background:#fff; color:#911F07; border-radius:16px; padding:40px 28px; max-width:90vw; margin:0 auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); font-size:1.3em; text-align:center;">
-            <strong>Thank you for submitting!</strong><br>We will reach you soon.
-            <br><br>
-            <button onclick="document.getElementById('thankyou-popup').style.display='none'" style="margin-top:18px; background:#FFD700; color:#911F07; border:none; border-radius:8px; padding:10px 28px; font-weight:600; font-size:1em;">Close</button>
-                </div>
-            </div>
     <!-- Add modal container -->
     <div id="info-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
         <div id="info-modal-content" style="background:#fff; color:#911F07; border-radius:16px; padding:32px 22px; max-width:90vw; margin:0 auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); font-size:1.1em; text-align:left; min-width:220px; min-height:120px;">
@@ -785,16 +778,8 @@
                 }
             }, 500);
         });
-        // Prevent submit if idol_type or size not selected
-        // Removed native onsubmit handler for #prebooking-form (was lines 789-831)
-        // Show thank you popup on submit
-        document.getElementById('prebooking-form').addEventListener('submit', function(e) {
-            if (!e.defaultPrevented) {
-                setTimeout(function() {
-                    document.getElementById('thankyou-popup').style.display = 'flex';
-                }, 100);
-            }
-        });
+        // Form submission is handled by jQuery validation plugin
+        // The submitHandler in the validation configuration will handle the redirect to success.html
     </script>
     <!-- WhatsApp Floating Action Button -->
     <a href="https://wa.me/447901241275" target="_blank" id="whatsapp-fab" style="background:linear-gradient(90deg, #FFD700 0%, #FFC300 100%); color:#911F07; border:3px solid #fff;">
@@ -817,8 +802,8 @@
 
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function() {
             var sizeData = {
@@ -881,10 +866,8 @@
                     // Show loading state
                     $('#form-message').removeClass('alert-danger alert-success').addClass('alert alert-info').html('<div style="text-align:center;"><i class="fa fa-spinner fa-spin" style="margin-right:8px;"></i>Submitting your prebooking...</div>').show();
                     
-                    $.ajax({
-                        type: "POST",
-                        url: "https://ganapati-form.vercel.app/api/process",
-                        data: $(form).serialize(),
+                    // Submit the form and handle the response
+                    $(form).ajaxSubmit({
                         dataType: 'json',
                         success: function(response) {
                             if(response.success) {
@@ -948,4 +931,4 @@
         }
     </script>
 </body>
-</html> 
+</html>

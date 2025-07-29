@@ -1,4 +1,6 @@
 <?php
+    header('Content-Type: application/json');
+    
     $to = "ssuryabackup@gmail.com";
     $name = isset($_POST['name']) ? $_POST['name'] : '';
     $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -19,4 +21,10 @@
     $body .= "Size: $size\n";
 
     $send = mail($to, $subject, $body, $headers);
+    
+    if ($send) {
+        echo json_encode(['success' => true, 'message' => 'Prebooking submitted successfully!']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Error sending email']);
+    }
 ?>
