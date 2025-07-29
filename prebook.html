@@ -461,7 +461,8 @@
             <div class="wizard-image">
                 <img src="img/ganesh-banner.jpg" alt="Ganesh Reference" />
                                     </div>
-            <form class="wizard-form" id="prebooking-form" action="process.php" method="post">
+            <form class="wizard-form" id="prebooking-form" action="https://formspree.io/f/xjkorlqj" method="POST">
+                <input type="hidden" name="_redirect" value="success.html" />
                 <div class="wizard-step-indicator">
                     <div class="wizard-step-dot active" id="step-dot-1"></div>
                     <div class="wizard-step-line"></div>
@@ -589,8 +590,8 @@
             </form>
             <!-- Form message container -->
             <div id="form-message" style="display:none; margin-top:20px; padding:15px; border-radius:8px; text-align:center;"></div>
-        </div>
-    </div>
+                </div>
+            </div>
     <!-- Add modal container -->
     <div id="info-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
         <div id="info-modal-content" style="background:#fff; color:#911F07; border-radius:16px; padding:32px 22px; max-width:90vw; margin:0 auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); font-size:1.1em; text-align:left; min-width:220px; min-height:120px;">
@@ -802,92 +803,61 @@
 
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
     <script>
-        $(document).ready(function() {
-            var sizeData = {
-                normal: {
-                    small: {img: 'img/normal-small.jpg', value: 'normal-small', label: 'Small<br><small>8-9 inches</small>'},
-                    medium: {img: 'img/normal-medium.png', value: 'normal-medium', label: 'Medium<br><small>12-15 inches</small>'},
-                    large: {img: 'img/normal_large.jpeg', value: 'normal-large', label: 'Large<br><small>20-24 inches</small>'},
-                    premium: {img: 'img/normal-premium.jpg', value: 'normal-premium', label: 'Premium<br><small>15-60 inches</small>'}
-                },
-                eco: {
-                    small: {img: 'img/eco-small.jpg', value: 'eco-small', label: 'Small<br><small>8-9 inches</small>'},
-                    medium: {img: 'img/eco-medium.png', value: 'eco-medium', label: 'Medium<br><small>12-15 inches</small>'},
-                    large: {img: 'img/eco-large.png', value: 'eco-large', label: 'Large<br><small>20-24 inches</small>'}
-                }
-            };
-            function updateSizes(type) {
-                $('#idol_type').val(type);
-                $('#size-img-small').attr('src', sizeData[type].small.img);
-                $('#size-img-medium').attr('src', sizeData[type].medium.img);
-                $('#size-img-large').attr('src', sizeData[type].large.img);
-                if(type === 'normal') {
-                    $('#size-img-premium').closest('.col-xs-6').show();
-                    $('#size-img-premium').attr('src', sizeData[type].premium.img);
-                    $('input[name="size"]').eq(3).val(sizeData[type].premium.value);
-                    $('#size-label-premium').html(sizeData[type].premium.label);
-                } else {
-                    $('#size-img-premium').closest('.col-xs-6').hide();
-                }
-                $('input[name="size"]').eq(0).val(sizeData[type].small.value);
-                $('input[name="size"]').eq(1).val(sizeData[type].medium.value);
-                $('input[name="size"]').eq(2).val(sizeData[type].large.value);
-                $('#size-label-small').html(sizeData[type].small.label);
-                $('#size-label-medium').html(sizeData[type].medium.label);
-                $('#size-label-large').html(sizeData[type].large.label);
-                $('input[name="size"]').prop('checked', false);
-            }
-            $('#idolTypeGroup button').click(function() {
-                $('#idolTypeGroup button').removeClass('active');
-                $(this).addClass('active');
-                var type = $(this).data('type');
-                updateSizes(type);
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUGUedPDmw2Ae2qNMPPP3rr4kLLepWF7U",
+      authDomain: "ganapati-form.firebaseapp.com",
+      projectId: "ganapati-form",
+      storageBucket: "ganapati-form.firebasestorage.app",
+      messagingSenderId: "146236575757",
+      appId: "1:146236575757:web:381806ab8648529b048544",
+      measurementId: "G-K817FJKHW8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    </script>
+    <script>
+    // Only keep client-side validation for required fields and wizard step logic
+    document.getElementById('prebooking-form').addEventListener('submit', async function(e) {
+        var idolType = document.getElementById('idol_type').value;
+        var sizeSelected = false;
+        var sizeValue = '';
+        if (idolType === 'Normal') {
+            document.querySelectorAll('#size-options-normal input[name="size"]').forEach(function(radio) { if (radio.checked) { sizeSelected = true; sizeValue = radio.value; } });
+        } else if (idolType === 'Premium') {
+            document.querySelectorAll('#size-options-premium input[name="size"]').forEach(function(radio) { if (radio.checked) { sizeSelected = true; sizeValue = radio.value; } });
+        } else if (idolType === 'Eco-Friendly') {
+            document.querySelectorAll('#size-options-eco input[name="size"]').forEach(function(radio) { if (radio.checked) { sizeSelected = true; sizeValue = radio.value; } });
+        }
+        if (!sizeSelected) {
+            alert('Please select a size.');
+            e.preventDefault();
+            return false;
+        }
+        // Save to Firestore before submitting to Formspree
+        try {
+            await db.collection('prebookings').add({
+                idol_type: idolType,
+                size: sizeValue,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                city: document.getElementById('city').value,
+                timestamp: new Date()
             });
-            updateSizes('normal');
-            $('#prebooking-form').validate({
-                rules: {
-                    name: { required: true, minlength: 2 },
-                    email: { required: true, email: true },
-                    phone: { required: true },
-                    city: { required: true },
-                    size: { required: true }
-                },
-                messages: {
-                    name: { required: "Please enter your name", minlength: "Your name must consist of at least 2 characters" },
-                    email: { required: "Please enter your email", email: "Please enter a valid email address" },
-                    phone: { required: "Please enter your phone number" },
-                    city: { required: "Please enter your city" },
-                    size: { required: "Please select a size" }
-                },
-                submitHandler: function(form) {
-                    // Show loading state
-                    $('#form-message').removeClass('alert-danger alert-success').addClass('alert alert-info').html('<div style="text-align:center;"><i class="fa fa-spinner fa-spin" style="margin-right:8px;"></i>Submitting your prebooking...</div>').show();
-                    
-                    // Submit the form and handle the response
-                    $(form).ajaxSubmit({
-                        dataType: 'json',
-                        success: function(response) {
-                            if(response.success) {
-                                // Redirect to the custom success page
-                                window.location.href = 'success.html';
-                            } else {
-                                $('#form-message').removeClass('alert-success alert-info').addClass('alert alert-danger').html('<div style="text-align:center; padding:15px;"><h4 style="color:#dc3545; margin-bottom:10px;">❌ Submission Error</h4><p>There was an error submitting your prebooking. Please try again.</p></div>').show();
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.log('Error:', xhr.responseText);
-                            $('#form-message').removeClass('alert-success alert-info').addClass('alert alert-danger').html('<div style="text-align:center; padding:15px;"><h4 style="color:#dc3545; margin-bottom:10px;">❌ Connection Error</h4><p>Unable to connect to the server. Please check your internet connection and try again.</p></div>').show();
-                        }
-                    });
-                    
-                    // Prevent default form submission
-                    return false;
-                }
-            });
-        });
+        } catch (err) {
+            // Optionally handle error, but do not block Formspree submission
+            console.error('Firestore save error:', err);
+        }
+        // Let the form submit to Formspree
+    });
+    // Optionally, you can use Formspree's redirect feature by adding a hidden input:
+    // <input type="hidden" name="_redirect" value="success.html" />
+    // Add this input to the form:
     </script>
     <script>
         function selectSize(element) {
@@ -931,4 +901,4 @@
         }
     </script>
 </body>
-</html>
+</html> 

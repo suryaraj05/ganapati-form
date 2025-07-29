@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Responses | Ganapati Form</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body { background: #faf7f4; }
+        .container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 32px 24px; }
+        h2 { color: #911F07; margin-bottom: 24px; }
+        #login-form { max-width: 350px; margin: 0 auto 32px auto; }
+        #logout-btn { float: right; margin-bottom: 16px; }
+        table { width: 100%; margin-top: 24px; }
+        th, td { padding: 8px 10px; border-bottom: 1px solid #eee; }
+        th { background: #FFD700; color: #911F07; }
+        tr:last-child td { border-bottom: none; }
+        .error { color: #dc3545; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Panel - Prebooking Responses</h2>
+        <button id="logout-btn" class="btn btn-warning" style="display:none;">Logout</button>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="admin-email">Email</label>
+                <input type="email" class="form-control" id="admin-email" required />
+            </div>
+            <div class="form-group">
+                <label for="admin-password">Password</label>
+                <input type="password" class="form-control" id="admin-password" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="error" id="login-error"></div>
+        </form>
+        <div id="responses-section" style="display:none;">
+            <table class="table table-bordered" id="responses-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>Idol Type</th>
+                        <th>Size</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUGUedPDmw2Ae2qNMPPP3rr4kLLepWF7U",
+      authDomain: "ganapati-form.firebaseapp.com",
+      projectId: "ganapati-form",
+      storageBucket: "ganapati-form.firebasestorage.app",
+      messagingSenderId: "146236575757",
+      appId: "1:146236575757:web:381806ab8648529b048544",
+      measurementId: "G-K817FJKHW8"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // UI Elements
+    const loginForm = document.getElementById('login-form');
+    const emailInput = document.getElementById('admin-email');
+    const passwordInput = document.getElementById('admin-password');
+    const loginError = document.getElementById('login-error');
+    const responsesSection = document.getElementById('responses-section');
+    const responsesTableBody = document.querySelector('#responses-table tbody');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    // Auth state
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            loginForm.style.display = 'none';
+            responsesSection.style.display = 'block';
+            logoutBtn.style.display = 'inline-block';
+            loadResponses();
+        } else {
+            loginForm.style.display = 'block';
+            responsesSection.style.display = 'none';
+            logoutBtn.style.display = 'none';
+            responsesTableBody.innerHTML = '';
+        }
+    });
+
+    // Login
+    loginForm.onsubmit = async function(e) {
+        e.preventDefault();
+        loginError.textContent = '';
+        try {
+            await auth.signInWithEmailAndPassword(emailInput.value, passwordInput.value);
+        } catch (err) {
+            loginError.textContent = err.message;
+        }
+    };
+
+    // Logout
+    logoutBtn.onclick = function() {
+        auth.signOut();
+    };
+
+    // Load responses from Firestore
+    async function loadResponses() {
+        responsesTableBody.innerHTML = '<tr><td colspan="7">Loading...</td></tr>';
+        try {
+            const snapshot = await db.collection('prebookings').orderBy('timestamp', 'desc').get();
+            if (snapshot.empty) {
+                responsesTableBody.innerHTML = '<tr><td colspan="7">No responses found.</td></tr>';
+                return;
+            }
+            let html = '';
+            snapshot.forEach(doc => {
+                const d = doc.data();
+                html += `<tr>
+                    <td>${d.name || ''}</td>
+                    <td>${d.email || ''}</td>
+                    <td>${d.phone || ''}</td>
+                    <td>${d.city || ''}</td>
+                    <td>${d.idol_type || ''}</td>
+                    <td>${d.size || ''}</td>
+                    <td>${d.timestamp ? new Date(d.timestamp.seconds ? d.timestamp.seconds * 1000 : d.timestamp).toLocaleString() : ''}</td>
+                </tr>`;
+            });
+            responsesTableBody.innerHTML = html;
+        } catch (err) {
+            responsesTableBody.innerHTML = `<tr><td colspan="7" style="color:#dc3545;">Error loading responses: ${err.message}</td></tr>`;
+        }
+    }
+    </script>
+</body>
+</html> 
